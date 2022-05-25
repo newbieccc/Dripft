@@ -19,7 +19,7 @@ public class BoardDAO {
 		String sql = "SELECT * FROM boardview LIMIT ?, 10";
 		
 		try {
-			con = DBConnection.dbConn();
+			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, b_no);
 			rs = pstmt.executeQuery();

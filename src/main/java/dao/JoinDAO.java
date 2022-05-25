@@ -17,7 +17,7 @@ public class JoinDAO {
 				+ "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
-			con = DBConnection.dbConn();
+			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getEmail());
 			pstmt.setString(2, dto.getPassword());
@@ -42,7 +42,7 @@ public class JoinDAO {
 	 int result = 1;
 	 
 	 try {
-		 con = DBConnection.dbConn();
+		 con = DBConnection.dbconn();
 		 pstmt = con.prepareStatement(sql);
 		 pstmt.setString(1, id);
 		 rs = pstmt.executeQuery();

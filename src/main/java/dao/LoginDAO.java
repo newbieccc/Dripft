@@ -15,7 +15,7 @@ public class LoginDAO {
 		String sql = "SELECT count(*) as count, m_nickname, m_email FROM account WHERE m_email=? AND m_password=? ";
 
 		try {
-			con = DBConnection.dbConn();
+			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_email());
 			pstmt.setString(2, dto.getM_password());
