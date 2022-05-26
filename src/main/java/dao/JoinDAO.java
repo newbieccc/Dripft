@@ -11,25 +11,23 @@ public class JoinDAO {
 
 	// 동혁이형
 	public int join(JoinDTO dto) {
-
 		int result = 0;
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO account (m_email, m_password, m_name, m_nickname, m_tel)"
-				+ "VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO accounts(m_email, m_password, m_name, m_nickname, m_birth, m_gender, m_tel) VALUE(?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, dto.getEmail());
-			pstmt.setString(2, dto.getPassword());
-			pstmt.setString(3, dto.getName());
-			pstmt.setString(4, dto.getNickname());
-			pstmt.setString(5, dto.getBirth());
-			pstmt.setString(6, dto.getGender());
-			pstmt.setString(7, dto.getTel());
-			pstmt.setInt(8, dto.getAuthority());
-			pstmt.setString(9, dto.getJoindate());
+			pstmt.setString(1, dto.getM_email());
+			pstmt.setString(2, dto.getM_password());
+			pstmt.setString(3, dto.getM_name());
+			pstmt.setString(4, dto.getM_nickname());
+			pstmt.setString(5, dto.getM_birth());
+			pstmt.setString(6, dto.getM_gender());
+			pstmt.setString(7, dto.getM_tel());
+
+			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -37,26 +35,6 @@ public class JoinDAO {
 		return result;
 	}
 
-	public int idCheck(String id) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT COUNT(*) FROM account WHERE m_email=?";
-		int result = 1;
-
-		try {
-			con = DBConnection.dbconn();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				result = rs.getInt(1);
-			}
-		} catch (Exception e) {
-		}
-		return result;
-	}
-	
 	public int emailCheck(String email) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -79,31 +57,30 @@ public class JoinDAO {
 
 		return result;
 	}
-	
+
 	public int nickCheck(String nickname) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT COUNT(*) FROM accounts WHERE m_nickname = ?";
 		int result = 1;
-		
-			try {
-				con = DBConnection.dbconn();
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, nickname);
-				rs = pstmt.executeQuery();
-				
-				if(rs.next()) {
-					result = rs.getInt(1);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				result = rs.getInt(1);
 			}
-			
-		return result;
-			
-		
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
+		return result;
+
+	}
 
 	// 승준이형
 	public void accountDel(JoinDTO dto) {
@@ -112,7 +89,7 @@ public class JoinDAO {
 		String sql = "DELETE FROM account WHERE m_email=?;";
 
 		try {
-			con = DBConnection.dbConn();
+			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_email());
 			pstmt.execute();
@@ -124,8 +101,7 @@ public class JoinDAO {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				;
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -138,7 +114,7 @@ public class JoinDAO {
 		String sql = "SELECT * FROM accounts WHERE m_email=?";
 
 		try {
-			con = DBConnection.dbConn();
+			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_email());
 			rs = pstmt.executeQuery();
@@ -164,7 +140,7 @@ public class JoinDAO {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -172,13 +148,37 @@ public class JoinDAO {
 		return dto;
 	}
 
+	public int idCheck(String m_email) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT COUNT(*) FROM accounts WHERE m_email=?";
+		int result = 1; 
+		
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, m_email);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+				System.out.println("결과는 : " + result + "개가 나왔습니다.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+		}		
+		return result;
+	}
+	
 	public void update(JoinDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE accounts SET m_nickname=? WHERE m_email=?";
 
 		try {
-			con = DBConnection.dbConn();
+			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_nickname());
 			pstmt.setString(2, dto.getM_email());
@@ -190,7 +190,7 @@ public class JoinDAO {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -206,7 +206,7 @@ public class JoinDAO {
 		String sql = "SELECT m_email FROM accounts WHERE m_name=? AND m_tel=?";
 
 		try {
-			con = DBConnection.dbConn();
+			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_name());
 			pstmt.setString(2, dto.getM_tel());

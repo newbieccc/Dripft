@@ -25,18 +25,18 @@ public class Join extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String email = request.getParameter("m_email");
-		String password = request.getParameter("m_password");
-		String name = request.getParameter("m_name");
-		String nickname = request.getParameter("m_nickname");
-		String birth = request.getParameter("m_birth");
-		String gender = request.getParameter("m_gender");
-		String tel = request.getParameter("m_tel");
-		int authority = Integer.parseInt(request.getParameter("m_authority"));
-		String joindate = request.getParameter("m_joindate");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
-		JoinDTO dto = new JoinDTO();
+		String m_email = request.getParameter("m_email");
+		String m_password = request.getParameter("m_password");
+		String m_name = request.getParameter("m_name");
+		String m_nickname = request.getParameter("m_nickname");
+		String m_birth = request.getParameter("m_birth");
+		String m_gender = request.getParameter("m_gender");
+		String m_tel = request.getParameter("m_tel");
+		
+		JoinDTO dto = new JoinDTO(m_email, m_password, m_name, m_nickname, m_birth, m_gender, m_tel);
 		
 		JoinDAO dao = new JoinDAO();
 		int result = dao.join(dto);

@@ -28,7 +28,7 @@ public class NickCheck extends HttpServlet {
 			String m_nickName = request.getParameter("m_nickName");
 			dao.JoinDAO dao = new dao.JoinDAO();
 			int result = 1;
-			result = dao.idCheck(m_nickName);
+			result = dao.nickCheck(m_nickName);
 			
 			
 			PrintWriter pw = response.getWriter();
