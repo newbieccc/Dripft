@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
 				String m_email = (String) session.getAttribute("m_email");
 				String m_password = (String) session.getAttribute("m_password");
 
-				response.sendRedirect("./main.jsp");
+				response.sendRedirect("./userInfo");
 			} else {
 				response.sendRedirect("./login.jsp?error=1024");
 			}

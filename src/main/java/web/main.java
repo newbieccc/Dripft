@@ -10,35 +10,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.BoardDAO;
-import dto.BoardDTO;
+import dao.mainBoardListDAO;
+import dto.BoardViewDTO;
+import dto.NoticeViewDTO;
 
-@WebServlet("/boardlist")
-public class BoardList extends HttpServlet {
+@WebServlet("/main")
+public class main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public BoardList() {
+    public main() {
         super();
     }
-    
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pageNo = 1;
-		if(request.getParameter("b_no") != null) {
-			pageNo = Integer.parseInt(request.getParameter("b_Pno"));
+		
+		mainBoardListDAO dao = new mainBoardListDAO();
+
+		try {
+			List<BoardViewDTO> bBoardList = dao.mainBest();
+			List<BoardViewDTO> boardList = dao.mainBoard();
+			List<NoticeViewDTO> noticeList = dao.mainNotice();
+			request.setAttribute("bboard", bBoardList);
+			request.setAttribute("board", boardList);
+			request.setAttribute("notice", noticeList);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
 		}
-		
-		BoardDAO dao = new BoardDAO();
-		List<BoardDTO> boardList = dao.boardList(pageNo * 10 - 10);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("./board.jsp");
-		request.setAttribute("list", boardList);
-		request.setAttribute("viewcount", boardList.get(0).getB_viewcount());
-		request.setAttribute("b_no", boardList.get(0).getB_no()); 
+
+		RequestDispatcher rd = request.getRequestDispatcher("./main.jsp");
 		rd.forward(request, response);
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }
