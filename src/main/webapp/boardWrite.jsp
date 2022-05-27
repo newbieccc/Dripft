@@ -28,7 +28,7 @@
 	height: 500px;
 }
 
-#btn{
+#btn {
 	height: 50px;
 	width: 150px;
 	background-color: skyblue;
@@ -65,7 +65,9 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#summernote').summernote({height : 400});
+			$('#summernote').summernote({
+				height : 400
+			});
 		});
 	</script>
 </body>
