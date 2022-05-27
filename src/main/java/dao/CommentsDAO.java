@@ -12,7 +12,7 @@ public class CommentsDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public List<CommentDTO> commentsList(int b_no) throws ClassNotFoundException, SQLException{
+	public List<CommentDTO> commentsList(int b_no) throws Exception{
 		
 		String sql = "SELECT * FROM commentsView WHERE C_DEL = 0 AND B_NO = ?";
 		CommentDTO dto = new CommentDTO();

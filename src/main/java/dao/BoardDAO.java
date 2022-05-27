@@ -50,7 +50,7 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public BoardViewDTO boardDetail(int b_no) throws ClassNotFoundException, SQLException {
+	public BoardViewDTO boardDetail(int b_no) throws Exception {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -77,21 +77,3 @@ public class BoardDAO {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
