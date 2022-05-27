@@ -84,13 +84,12 @@ public class mainBoardListDAO {
 
 			NoticeViewDTO dto = new NoticeViewDTO();
 
-			dto.setN_no(rs.getInt(1));
-			dto.setN_title(rs.getString(2));
-			dto.setN_content(rs.getString(3));
-			dto.setN_date(rs.getString(4));
-			dto.setN_viewcount(rs.getInt(5));
-			dto.setN_del(rs.getInt(6));
-			dto.setM_nickname(rs.getString(7));
+			dto.setN_no(rs.getInt("n_no"));
+			dto.setN_title(rs.getString("n_title"));
+			dto.setN_content(rs.getString("n_content"));
+			dto.setN_date(rs.getString("n_date"));
+			dto.setN_viewcount(rs.getInt("n_viewcount"));
+			dto.setM_nickname(rs.getString("m_nickname"));
 
 			nBoardList.add(dto);
 		}

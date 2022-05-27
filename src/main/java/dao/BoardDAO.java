@@ -77,4 +77,24 @@ public class BoardDAO {
 		return dto;
 	}
 	
+	public int BoardWriter(String s_email, int b_no) throws ClassNotFoundException, SQLException {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT m_email FROM board where B_NO = ?";
+		
+		con = DBConnection.dbconn();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, b_no);
+		rs = pstmt.executeQuery();
+		
+		rs.next();
+		if(rs.getString("m_email").equals(s_email)) {
+			
+			return 1;
+		}else {
+			return 0;
+		}
+	}
 }

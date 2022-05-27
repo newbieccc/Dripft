@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href = "./boardChange?b_no=${list.b_no}">글수정</a>
 	${list.b_no} ${list.b_title} ${list.b_content} ${list.b_date}
 	${list.b_like} ${list.b_dislike} ${list.b_viewcount} ${list.m_nickname}
 	${list.totalcomments}
