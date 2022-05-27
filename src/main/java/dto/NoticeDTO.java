@@ -1,8 +1,8 @@
 package dto;
 
 public class NoticeDTO {
-	private int  n_no, n_del, n_viewcount;
-	private String m_email, n_title, n_content, n_date;
+	private int  n_no, n_del, n_viewcount, totalcount;
+	private String m_email, n_title, n_content, n_date, m_nickname;
 	public int getN_no() {
 		return n_no;
 	}
@@ -44,6 +44,18 @@ public class NoticeDTO {
 	}
 	public void setN_date(String n_date) {
 		this.n_date = n_date;
+	}
+	public int getTotalcount() {
+		return totalcount;
+	}
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
+	}
+	public String getM_nickname() {
+		return m_nickname;
+	}
+	public void setM_nickname(String m_nickname) {
+		this.m_nickname = m_nickname;
 	}
 	
 	

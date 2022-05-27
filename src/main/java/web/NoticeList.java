@@ -23,14 +23,20 @@ public class NoticeList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		NoticeDAO dao = new NoticeDAO(); //DAO -> DB를 사용해 데이터를 조작하는 기능을 전담하도록 만든 오브젝트
-		List<NoticeDTO> noticeList = dao.noticeList(); //DTO -> 계층간 데이터 교환이 이루어 질 수 있도록 하는 객체
+		int pageNo = 1;
+		if(request.getParameter("pageNo") != null) {
+			pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		}
 		
-		//System.out.println(noticeList);
-		//System.out.println(noticeList.get(0).getN_no());
+		NoticeDAO dao = new NoticeDAO(); //DAO -> DB를 사용해 데이터를 조작하는 기능을 전담하도록 만든 오브젝트
+		List<NoticeDTO> noticeList = dao.noticeList(pageNo * 10 - 10); //DTO -> 계층간 데이터 교환이 이루어 질 수 있도록 하는 객체
+		
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("./notice.jsp");
 		request.setAttribute("list", noticeList);
+		request.setAttribute("totalcount", noticeList.get(0).getTotalcount());
+		request.setAttribute("pageNo", pageNo);
 		rd.forward(request, response);
 	}
 

@@ -38,25 +38,27 @@ public class NoticeDAO {
 		
 	}
 
-	public List<NoticeDTO> noticeList() {
+	public List<NoticeDTO> noticeList(int pageNo) {
 		List<NoticeDTO> list = new ArrayList<NoticeDTO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM notice";
+		String sql = "SELECT * FROM noticeView LIMIT ?, 10";
 				
 		try {
 			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, pageNo);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				NoticeDTO dto = new NoticeDTO();
 				dto.setN_no(rs.getInt("n_no"));
-				dto.setM_email(rs.getString("m_email"));
 				dto.setN_title(rs.getString("n_title"));
 				dto.setN_content(rs.getString("n_content"));
 				dto.setN_date(rs.getString("n_date"));
 				dto.setN_viewcount(rs.getInt("n_viewcount"));
+				dto.setM_nickname(rs.getString("m_nickname"));
+				dto.setTotalcount(rs.getInt("totalcount"));
 				list.add(dto);
 			}
 		} catch (Exception e) {
