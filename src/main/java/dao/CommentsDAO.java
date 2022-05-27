@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import db.DBConnection;
-import dto.CommentDTO;
+import dto.CommentViewDTO;
 
 
 public class CommentsDAO {
@@ -12,10 +12,10 @@ public class CommentsDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	public List<CommentDTO> commentsList(int b_no) throws Exception{
+	public List<CommentViewDTO> commentsList(int b_no) throws Exception{
 		
 		String sql = "SELECT * FROM commentsView WHERE C_DEL = 0 AND B_NO = ?";
-		List<CommentDTO> list = new ArrayList<CommentDTO>();
+		List<CommentViewDTO> list = new ArrayList<CommentViewDTO>();
 		
 		con = DBConnection.dbconn();
 		pstmt = con.prepareStatement(sql);
@@ -23,7 +23,7 @@ public class CommentsDAO {
 		rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
-			CommentDTO dto = new CommentDTO();
+			CommentViewDTO dto = new CommentViewDTO();
 			
 			dto.setC_no(rs.getInt("c_no"));
 			dto.setC_content(rs.getString("c_content"));

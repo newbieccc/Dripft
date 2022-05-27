@@ -31,7 +31,7 @@ public class BoardDetail extends HttpServlet {
 		CommentsDAO commentdao = new CommentsDAO(); 
 		try {
 			BoardViewDTO dto = boarddao.boardDetail(b_no);
-			List<CommentDTO> commentList = commentdao.commentsList(b_no);
+			List<CommentViewDTO> commentList = commentdao.commentsList(b_no);
 			
 			request.setAttribute("list", dto);
 			request.setAttribute("commentList", commentList);
