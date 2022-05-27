@@ -222,4 +222,28 @@ public class JoinDAO {
 		}
 		return m_email;
 	}
+
+	public int pwFind(JoinDTO dto) {
+		
+		int x = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE accounts SET M_PASSWORD = ? WHERE m_email=? AND m_name=? AND m_tel=?";
+		
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getM_password());
+			pstmt.setString(2, dto.getM_email());
+			pstmt.setString(3, dto.getM_name());
+			pstmt.setString(4, dto.getM_tel());
+			x = pstmt.executeUpdate();
+			
+			System.out.println(x);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return x;
+	}
 }

@@ -28,6 +28,13 @@ public class JoinDTO {
 		this.m_tel = m_tel;
 	}
 
+	public JoinDTO(String m_email, String m_name, String m_tel, String m_password) {		
+		this.m_email = m_email;
+		this.m_name = m_name;
+		this.m_tel = m_tel;
+		this.m_password = m_password;
+	}
+
 	public String getM_email() {
 		return m_email;
 	}

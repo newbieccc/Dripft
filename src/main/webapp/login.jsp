@@ -46,7 +46,18 @@
 				<button>LOGIN</button>
 			</form>
 			<a href="join.jsp">회원가입</a>
+			<div id="idFind">
+				<form action="./idFind">			
+				<a href="idFind.jsp">아이디 찾기</a>
+				</form>
+			</div>
+			<div id="pwFind">
+				<form action="./pwFind">			
+				<a href="pwFind.jsp">비번 찾기</a>
+				</form>
+			</div>
 		</div>
+		
 		<%-- 에러 ${error } --%>
 		<br>
 		<%-- 파람.에러 ${param.error } --%>
