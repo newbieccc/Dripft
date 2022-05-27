@@ -10,6 +10,7 @@ public class CommentDTO {
 	private int c_dislike;
 	private int c_del;
 	private String m_nickname;
+	
 	public int getC_no() {
 		return c_no;
 	}
