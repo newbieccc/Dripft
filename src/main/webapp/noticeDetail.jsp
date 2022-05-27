@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-	작성자 : ${dto.m_email}<br>
+	작성자 : ${dto.m_nickname}<br>
 	제목 : ${dto.n_title}<br>
 	내용 : ${dto.n_content}<br>
 	날짜 : ${dto.n_date}<br>

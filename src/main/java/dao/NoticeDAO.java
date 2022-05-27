@@ -81,7 +81,7 @@ public class NoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM notice WHERE n_no=?";
+		String sql = "SELECT *, count(*) as count FROM noticeView WHERE n_no=? and n_del = 0";
 		
 		try {
 			con = DBConnection.dbconn();
@@ -90,10 +90,11 @@ public class NoticeDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dto.setM_email(rs.getString("m_email"));
+				dto.setM_nickname(rs.getString("m_nickname"));
 				dto.setN_title(rs.getString("n_title"));
 				dto.setN_content(rs.getString("n_content"));
 				dto.setN_date(rs.getString("n_date"));
+				dto.setResultcount(rs.getInt("count"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

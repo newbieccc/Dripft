@@ -24,14 +24,20 @@ public class NoticeDetail extends HttpServlet {
 		if(request.getParameter("n_no") != null
 				&& util.Util.str2Int(request.getParameter("n_no"))) {
 			int n_no = Integer.parseInt(request.getParameter("n_no"));
-			NoticeDAO dao = new NoticeDAO();
-			NoticeDTO dto = dao.noticeDetail(n_no);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("./noticeDetail.jsp");
-			request.setAttribute("dto", dto);
-			rd.forward(request, response);
-		} else {
 			
+			NoticeDAO dao = new NoticeDAO();
+			NoticeDTO dto = dao.noticeDetail(n_no);
+			System.out.println(dto.getResultcount());
+			if(dto.getResultcount() == 1) {
+				request.setAttribute("dto", dto);
+				rd.forward(request, response);
+			} else {
+				response.sendRedirect("./main");
+			}
+		} else {
+			response.sendRedirect("./main");
 		}
 	}
 
