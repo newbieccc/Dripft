@@ -43,7 +43,7 @@ public class mainBoardListDAO {
 
 	public List<BoardViewDTO> mainBoard() throws Exception {
 
-		String sql = "SELECT * FROM boardView WHERE B_DEL = 0 ORDER BY B_LIKE DESC LIMIT 0, 10"; //추천수가 같으면 날짜순으로 정렬하는거 추가
+		String sql = "SELECT * FROM boardView WHERE B_DEL = 0 AND B_LIKE < 20 ORDER BY B_LIKE DESC LIMIT 0, 10"; //추천수가 같으면 날짜순으로 정렬하는거 추가
 		List<BoardViewDTO> bBoardList = new ArrayList<BoardViewDTO>();
 		
 		con = DBConnection.dbconn();

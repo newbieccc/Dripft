@@ -62,17 +62,18 @@ public class BoardDAO {
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, b_no);
 		rs = pstmt.executeQuery();
-		rs.next();
-		dto.setB_no(rs.getInt("b_no"));
-		dto.setB_title(rs.getString("b_title"));
-		dto.setB_content(rs.getString("b_content"));
-		dto.setB_date(rs.getString("b_date"));
-		dto.setB_like(rs.getInt("b_like"));
-		dto.setB_dislike(rs.getInt("b_dislike"));
-		dto.setB_viewcount(rs.getInt("b_viewcount"));
-		dto.setM_nickname(rs.getString("m_nickname"));
-		dto.setTotalcomments(rs.getInt("totalcomments"));
 		
+		while (rs.next()) {
+			dto.setB_no(rs.getInt("b_no"));
+			dto.setB_title(rs.getString("b_title"));
+			dto.setB_content(rs.getString("b_content"));
+			dto.setB_date(rs.getString("b_date"));
+			dto.setB_like(rs.getInt("b_like"));
+			dto.setB_dislike(rs.getInt("b_dislike"));
+			dto.setB_viewcount(rs.getInt("b_viewcount"));
+			dto.setM_nickname(rs.getString("m_nickname"));
+			dto.setTotalcomments(rs.getInt("totalcomments"));
+		}
 		return dto;
 	}
 	

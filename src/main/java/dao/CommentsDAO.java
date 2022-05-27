@@ -15,7 +15,6 @@ public class CommentsDAO {
 	public List<CommentDTO> commentsList(int b_no) throws Exception{
 		
 		String sql = "SELECT * FROM commentsView WHERE C_DEL = 0 AND B_NO = ?";
-		CommentDTO dto = new CommentDTO();
 		List<CommentDTO> list = new ArrayList<CommentDTO>();
 		
 		con = DBConnection.dbconn();
@@ -24,6 +23,7 @@ public class CommentsDAO {
 		rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
+			CommentDTO dto = new CommentDTO();
 			
 			dto.setC_no(rs.getInt("c_no"));
 			dto.setC_content(rs.getString("c_content"));
