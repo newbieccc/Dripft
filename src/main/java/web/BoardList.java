@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.BoardDAO;
 import dto.BoardDTO;
+import dto.BoardViewDTO;
 
 @WebServlet("/boardlist")
 public class BoardList extends HttpServlet {
@@ -28,7 +29,7 @@ public class BoardList extends HttpServlet {
 		}
 		
 		BoardDAO dao = new BoardDAO();
-		List<BoardDTO> boardList = dao.boardList(pageNo * 10 - 10);
+		List<BoardViewDTO> boardList = dao.boardList(pageNo * 10 - 10);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("./board.jsp");
 		request.setAttribute("list", boardList);

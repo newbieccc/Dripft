@@ -11,12 +11,12 @@ import db.DBConnection;
 import dto.*;
 
 public class BoardDAO {
-	public List<BoardDTO> boardList(int b_no){
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
+	public List<BoardViewDTO> boardList(int b_no){
+		List<BoardViewDTO> list = new ArrayList<BoardViewDTO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM boardview LIMIT ?, 10";
+		String sql = "SELECT * FROM boardView WHERE B_LIKE < 20 AND B_DEL = 0 LIMIT ?, 10";
 		
 		try {
 			con = DBConnection.dbconn();
@@ -24,7 +24,7 @@ public class BoardDAO {
 			pstmt.setInt(1, b_no);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				BoardDTO dto = new BoardDTO();
+				BoardViewDTO dto = new BoardViewDTO();
 				dto.setB_no(rs.getInt("b_no"));
 				dto.setB_title(rs.getString("b_title"));
 				dto.setB_date(rs.getString("b_date"));
@@ -32,7 +32,7 @@ public class BoardDAO {
 				dto.setB_viewcount(rs.getInt("b_viewcount"));
 				dto.setB_content(rs.getString("b_content"));
 				dto.setB_dislike(rs.getInt("b_dislike"));
-				dto.setB_email(rs.getString("b_email"));
+				dto.setM_nickname(rs.getString("m_nickname"));
 				
 				list.add(dto);
 				
@@ -77,24 +77,46 @@ public class BoardDAO {
 		return dto;
 	}
 	
-	public int BoardWriter(String s_email, int b_no) throws ClassNotFoundException, SQLException {
+	public int BoardChange(BoardDTO dto){
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT m_email FROM board where B_NO = ?";
+		String sql = "Update board SET b_title = ?, b_content = ? WHERE b_no = ?";
 		
-		con = DBConnection.dbconn();
-		pstmt = con.prepareStatement(sql);
-		pstmt.setInt(1, b_no);
-		rs = pstmt.executeQuery();
-		
-		rs.next();
-		if(rs.getString("m_email").equals(s_email)) {
-			
-			return 1;
-		}else {
-			return 0;
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getB_title());
+			pstmt.setString(2, dto.getB_content());
+			pstmt.setInt(3, dto.getB_no());
+			int Update_result = pstmt.executeUpdate();
+			return Update_result;
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			return -1;
 		}
+		
 	}
+	
+	//session(로그인중인 사람)의 m_email속성(s_email)과 게시글 번호(b_no)를 넣어 작성자가 일치하면 1, 일치하지 않으면 0을 반환
+		public int BoardWriterCheck(String s_email, int b_no) throws ClassNotFoundException, SQLException {
+			
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "SELECT m_email FROM board where B_NO = ?";
+			
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			if(rs.getString("m_email").equals(s_email)) {
+				
+				return 1;
+			}else {
+				return 0;
+			}
+		}
 }

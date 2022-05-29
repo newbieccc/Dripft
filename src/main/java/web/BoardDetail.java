@@ -28,7 +28,8 @@ public class BoardDetail extends HttpServlet {
 		int b_no = Integer.parseInt(request.getParameter("b_no"));
 		
 		BoardDAO boarddao = new BoardDAO();
-		CommentsDAO commentdao = new CommentsDAO(); 
+		CommentsDAO commentdao = new CommentsDAO();
+		//String error = request.get
 		try {
 			BoardViewDTO dto = boarddao.boardDetail(b_no);
 			List<CommentViewDTO> commentList = commentdao.commentsList(b_no);

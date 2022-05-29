@@ -24,6 +24,8 @@ public class BoardChange extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		if(Integer.parseInt(request.getParameter("del")) == 1) doPost(request, response);
+		
 		int b_no = Integer.parseInt(request.getParameter("b_no"));
 		
 		BoardDAO dao = new BoardDAO();
@@ -33,40 +35,31 @@ public class BoardChange extends HttpServlet {
 		String s_email = (String) session.getAttribute("m_email");
 		
 		try {
-			int result = dao.BoardWriter(s_email, b_no);
+			int result = dao.BoardWriterCheck(s_email, b_no);
 			if(result == 1) {
 				
 				BoardViewDTO dto = dao.boardDetail(b_no);
 				String title = dto.getB_title();
 				String content = dto.getB_content();
-				request.setAttribute("title", title);
-				request.setAttribute("content", content);
+				request.setAttribute("b_no", b_no);
+				request.setAttribute("b_title", title);
+				request.setAttribute("b_content", content);
 				
 				rd.forward(request, response);
 			}else {
 				
-				response.sendRedirect("./boardDetail?b_no="+b_no);
+				response.sendRedirect("./boardDetail?b_no="+b_no+"&error=1024");
 			}
-		} catch (ClassNotFoundException | SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		
-		
-		
-		try {
-			dao.boardDetail(b_no);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		int b_no = Integer.parseInt(request.getParameter("b_no"));
+		
+		System.out.println(b_no);
 	}
 
 }

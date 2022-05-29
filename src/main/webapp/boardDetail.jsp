@@ -25,5 +25,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+		<a href = "./logout">로그아웃</a>
+	<%= request.getParameter("error") %>
 </body>
 </html>
