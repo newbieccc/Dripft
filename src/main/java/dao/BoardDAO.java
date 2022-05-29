@@ -98,6 +98,38 @@ public class BoardDAO {
 		
 	}
 	
+	public int BoardDelete(int b_no) throws ClassNotFoundException, SQLException {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "Update board SET b_del = 1 WHERE b_no = ?";
+		
+		con = DBConnection.dbconn();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, b_no);
+		
+		return pstmt.executeUpdate();
+	}
+	
+	public int BoardViewIncrease(int b_no) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "Update board SET b_viewcount = b_viewcount + 1 WHERE b_no = ?";
+		int result = 0;
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
 	//session(로그인중인 사람)의 m_email속성(s_email)과 게시글 번호(b_no)를 넣어 작성자가 일치하면 1, 일치하지 않으면 0을 반환
 		public int BoardWriterCheck(String s_email, int b_no) throws ClassNotFoundException, SQLException {
 			
