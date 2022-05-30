@@ -14,10 +14,10 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#">게시판</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">인기게시판</a>
+					aria-current="page" href="./boardlist">게시판</a></li>
+				<li class="nav-item"><a class="nav-link active" href="./bestBoardList">인기게시판</a>
 				</li>
-				<li class="nav-item"><a class="nav-link active" href="#">공지사항</a>
+				<li class="nav-item"><a class="nav-link active" href="./noticeList">공지사항</a>
 				</li>
 				<!-- <li class="nav-item"><a class="nav-link disabled" href="#" 
 					tabindex="-1" aria-disabled="true">Disabled</a></li>  -->
@@ -28,7 +28,9 @@
 				<button class="btn btn-outline-success" type="submit">Search</button>
 			</form>
 			<ul class="navbar-nav me-2-auto mb-2 mb-lg-0">
-				<li class="nav-item"><a class="nav-link active" href="#">로그인</a>
+				<li class="nav-item"><a class="nav-link active" href="./join.jsp">회원가입</a>
+				</li>
+				<li class="nav-item"><a class="nav-link active" href="./login.jsp">로그인</a>
 				</li>
 			</ul>
 		</div>
