@@ -9,10 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href = "./boardChange?b_no=${list.b_no}&del=0">글수정</a>
-	<a href = "./boardChange?b_no=${list.b_no}&del=1">글삭제</a>
-	${list.b_no} ${list.b_title} ${list.b_content} ${list.b_date}
-	${list.b_like} ${list.b_dislike} ${list.b_viewcount} ${list.m_nickname}
+	<a href="./boardChange?b_no=${list.b_no}&del=0">글수정</a>
+	<a href="./boardChange?b_no=${list.b_no}&del=1">글삭제</a> ${list.b_no}
+	${list.b_title} ${list.b_content} ${list.b_date} ${list.b_like}
+	${list.b_dislike} ${list.b_viewcount} ${list.m_nickname}
 	${list.totalcomments}
 
 	<table>
@@ -26,7 +26,12 @@
 			</tr>
 		</c:forEach>
 	</table>
-		<a href = "./logout">로그아웃</a>
+	<form action="./commentWrite" method="post">
+		<input type="text" name="c_content">
+		<input type = "hidden" name = "b_no" value="${list.b_no}">
+		<button type="submit">댓글쓰기</button>
+	</form>
+	<a href="./logout">로그아웃</a>
 	<%= request.getParameter("error") %>
 </body>
 </html>

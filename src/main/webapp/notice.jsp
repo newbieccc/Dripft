@@ -31,14 +31,5 @@
 		</c:forEach>
 	</table>
 	<hr>
-	pageNo = ${pageNo } <br> totalcount = ${totalcount }<br>
-	totalpage = <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
-			<c:if test="${(totalcount % 10) > 0 }">
-				<c:set var="totalpage" value="${totalpage + 1}" />
-			</c:if>
-	변환된 : ${totalpage }
-	<hr>
-	
-
 </body>
 </html>
