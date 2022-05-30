@@ -199,5 +199,48 @@ public class BoardDAO {
 		}
 
 	}
+	
+	public int BoardDisLike(int b_no, String ip) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO boarddislikeoverlap(b_no, ipv4) VALUES(?,?)";
+		int result = 0;
+
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			pstmt.setString(2, ip);
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		} catch (Exception e) {
+
+			return -1;
+		}
+
+		return result;
+
+	}
+
+	public void BoardDisLikeUp(int b_no) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE board SET B_DISLIKE = B_DISLIKE + 1 WHERE B_NO = ?";
+
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			pstmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 }

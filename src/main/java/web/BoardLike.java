@@ -23,17 +23,30 @@ public class BoardLike extends HttpServlet {
 		
 		BoardDAO dao = new BoardDAO();
 		HttpSession session = request.getSession();
+		String action = request.getParameter("action");
 		
 		int b_no = Integer.parseInt(request.getParameter("b_no"));
 		String ip = util.getIP.getIPV4(request);
 		System.out.println(ip);
-		if(dao.BoardLike(b_no, ip) == 1) {
-			
-			dao.BoardLikeUp(b_no);
-			response.sendRedirect("./boardDetail?&b_no="+b_no);
-		}else {
-			
-			response.sendRedirect("./boardDetail?&b_no="+b_no+"&error=alreadylike");
+		
+		if(action.equals("like")) {
+			if(dao.BoardLike(b_no, ip) == 1) {
+				
+				dao.BoardLikeUp(b_no);
+				response.sendRedirect("./boardDetail?&b_no="+b_no);
+			}else {
+				
+				response.sendRedirect("./boardDetail?&b_no="+b_no+"&error=alreadylike");
+			}
+		}else if(action.equals("dislike")) {
+			if(dao.BoardDisLike(b_no, ip) == 1) {
+				
+				dao.BoardDisLikeUp(b_no);
+				response.sendRedirect("./boardDetail?&b_no="+b_no);
+			}else {
+				
+				response.sendRedirect("./boardDetail?&b_no="+b_no+"&error=alreadydislike");
+			}
 		}
 		
 	}
