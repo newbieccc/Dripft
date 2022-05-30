@@ -39,6 +39,8 @@ public class logout extends HttpServlet {
 			session.removeAttribute("m_nincname");
 			
 			session.invalidate();
+			
+			response.sendRedirect("./main");
 		}
 	}
 
