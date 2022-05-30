@@ -6,6 +6,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+
+function nickCheck() {
+	var nickname = $("#m_nickname").val();//
+	
+	$.ajax({
+		url : "./nickCheck",
+		type : "GET",
+		dataType : "html",
+		data : {"m_nickname" : nickname}, // 키값 : 값(var 뒤에 오는 값)
+		success : function(result) {
+			if (result == 0) {
+				$("#checkResult1").css("color", "green");
+				$("#checkResult1").text(nickname + "은 가입할 수 있습니다.");
+				$("#joinBtn").attr("disabled", false);
+			} else {
+				$("#checkResult1").css("color", "red");
+				$("#checkResult1").text(nickname + "는 이미 등록된 닉네임입니다.");
+				$("#joinBtn").attr("disabled", true);
+				$("#nickname").focus();
+			}
+		},
+		error : function() {
+			alert("서버가 동작하지 않습니다.");
+		}
+	});
+}
+</script>
 <body>
  	  서버에서 오는 값 : ${userInfo } <br>
       이메일 : ${userInfo.m_email } <br>
