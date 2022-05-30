@@ -12,23 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.JoinDAO;
-import dao.LoginDAO;
 import dto.JoinDTO;
-import dto.LoginDTO;
 
-@WebServlet("/userInfo")
-public class UserInfo extends HttpServlet {
+
+@WebServlet("/userUpdate")
+public class UserUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public UserInfo() {
+
+    public UserUpdate() {
         super();
+
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("UserInfo -> get");
-		response.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		//System.out.println(session.getAttribute("m_email"));
 		if(session.getAttribute("m_email") != null) {
 			JoinDTO dto = new JoinDTO((String) session.getAttribute("m_email"));
 			
@@ -55,19 +54,16 @@ public class UserInfo extends HttpServlet {
 			pw.println("<hr>");
 			pw.println("</body>");
 			pw.println("</html>");
-			RequestDispatcher rd = request.getRequestDispatcher("./userInfo.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("./userUpdate.jsp");
 			//주소표시줄 유지, 화면만 변경
 			request.setAttribute("userInfo", dto);
 			rd.forward(request, response);
-			
-		
-		} else {
-			
-		}
 	}
+}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("UserInfo -> post");
+
+		doGet(request, response);
 	}
 
 }
