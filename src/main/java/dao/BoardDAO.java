@@ -35,6 +35,7 @@ public class BoardDAO {
 				dto.setB_dislike(rs.getInt("b_dislike"));
 				dto.setM_nickname(rs.getString("m_nickname"));
 				dto.setTotalcount(rs.getInt("totalcount"));
+				dto.setTotalcomments(rs.getInt("totalcomments"));
 				
 				list.add(dto);
 

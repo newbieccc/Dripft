@@ -14,17 +14,23 @@
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
-			<th>날짜</th>
-			<th>닉네임</th>
+			<th>작성일자</th>
+			<th>추천</th>
+			<th>비추</th>
 			<th>조회수</th>
+			<th>닉네임</th>
+			<th>댓글수</th>			
 		</tr>
 		<c:forEach items="${list }" var="i">
 			<tr>
 				<td>${i.b_no }</td>
 				<td><a href="./boardDetail?n_no=${i.b_no }">${i.b_title }</a></td>
 				<td>${i.b_date }</td>
-				<td>${i.m_nickname }</td>
+				<td>${i.b_like }</td>
+				<td>${i.b_dislike }</td>
 				<td>${i.b_viewcount }</td>
+				<td>${i.m_nickname }</td>
+				<td>${i.totalcomments }</td>
 			</tr>
 		</c:forEach>
 	</table>
