@@ -151,4 +151,26 @@ public class BoardDAO {
 				return 0;
 			}
 		}
+
+		public void like(int b_no) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			String sql = "UPDATE boardView SET b_like=b_like + 1 WHERE b_no=?";
+			
+			try {
+				con = DBConnection.dbconn();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, b_no);
+				pstmt.execute();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
 }
