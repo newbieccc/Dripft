@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.BoardDAO;
 import util.Util;
@@ -19,13 +20,20 @@ public class BoardLike extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("b_no") != null
-				&& Util.str2Int(request.getParameter("b_no"))) {
-			int b_no = Integer.parseInt(request.getParameter("b_no"));
-			//데이터베이스 접속 b_like + 1 시키기
-			BoardDAO dao = new BoardDAO();
-			dao.like(b_no);
-			response.sendRedirect("./boardDetail?b_no=" + b_no);
+		
+		BoardDAO dao = new BoardDAO();
+		HttpSession session = request.getSession();
+		
+		int b_no = Integer.parseInt(request.getParameter("b_no"));
+		String ip = util.getIP.getIPV4(request);
+		System.out.println(ip);
+		if(dao.BoardLike(b_no, ip) == 1) {
+			
+			dao.BoardLikeUp(b_no);
+			response.sendRedirect("./boardDetail?&b_no="+b_no);
+		}else {
+			
+			response.sendRedirect("./boardDetail?&b_no="+b_no+"&error=alreadylike");
 		}
 		
 	}

@@ -11,13 +11,13 @@ import db.DBConnection;
 import dto.*;
 
 public class BoardDAO {
-	public List<BoardViewDTO> boardList(int b_no){
+	public List<BoardViewDTO> boardList(int b_no) {
 		List<BoardViewDTO> list = new ArrayList<BoardViewDTO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM boardView WHERE B_LIKE < 20 AND B_DEL = 0 LIMIT ?, 10";
-		
+
 		try {
 			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
@@ -33,36 +33,40 @@ public class BoardDAO {
 				dto.setB_content(rs.getString("b_content"));
 				dto.setB_dislike(rs.getInt("b_dislike"));
 				dto.setM_nickname(rs.getString("m_nickname"));
-				
+
 				list.add(dto);
-				
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(rs != null) {rs.close();}
-				if(pstmt != null) {pstmt.close();}
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return list;
 	}
-	
+
 	public BoardViewDTO boardDetail(int b_no) throws Exception {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM boardView where B_NO = ?";
 		BoardViewDTO dto = new BoardViewDTO();
-		
+
 		con = DBConnection.dbconn();
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, b_no);
 		rs = pstmt.executeQuery();
-		
+
 		while (rs.next()) {
 			dto.setB_no(rs.getInt("b_no"));
 			dto.setB_title(rs.getString("b_title"));
@@ -76,13 +80,13 @@ public class BoardDAO {
 		}
 		return dto;
 	}
-	
-	public int BoardChange(BoardDTO dto){
-		
+
+	public int BoardChange(BoardDTO dto) {
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "Update board SET b_title = ?, b_content = ? WHERE b_no = ?";
-		
+
 		try {
 			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
@@ -95,24 +99,24 @@ public class BoardDAO {
 			// TODO Auto-generated catch block
 			return -1;
 		}
-		
+
 	}
-	
+
 	public int BoardDelete(int b_no) throws ClassNotFoundException, SQLException {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "Update board SET b_del = 1 WHERE b_no = ?";
-		
+
 		con = DBConnection.dbconn();
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, b_no);
-		
+
 		return pstmt.executeUpdate();
 	}
-	
+
 	public int BoardViewIncrease(int b_no) {
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String sql = "Update board SET b_viewcount = b_viewcount + 1 WHERE b_no = ?";
@@ -123,54 +127,77 @@ public class BoardDAO {
 			pstmt.setInt(1, b_no);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 		return result;
 	}
-	
-	//session(로그인중인 사람)의 m_email속성(s_email)과 게시글 번호(b_no)를 넣어 작성자가 일치하면 1, 일치하지 않으면 0을 반환
-		public int BoardWriterCheck(String s_email, int b_no) throws ClassNotFoundException, SQLException {
-			
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = "SELECT m_email FROM board where B_NO = ?";
-			
+
+	// session(로그인중인 사람)의 m_email속성(s_email)과 게시글 번호(b_no)를 넣어 작성자가 일치하면 1, 일치하지 않으면
+	// 0을 반환
+	public int BoardWriterCheck(String s_email, int b_no) throws ClassNotFoundException, SQLException {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT m_email FROM board where B_NO = ?";
+
+		con = DBConnection.dbconn();
+		pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, b_no);
+		rs = pstmt.executeQuery();
+
+		rs.next();
+		if (rs.getString("m_email").equals(s_email)) {
+
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	public int BoardLike(int b_no, String ip) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO boardlikeoverlap(b_no, ipv4) VALUES(?,?)";
+		int result = 0;
+
+		try {
 			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, b_no);
-			rs = pstmt.executeQuery();
-			
-			rs.next();
-			if(rs.getString("m_email").equals(s_email)) {
-				
-				return 1;
-			}else {
-				return 0;
-			}
+			pstmt.setString(2, ip);
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		} catch (Exception e) {
+
+			return -1;
 		}
 
-		public void like(int b_no) {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			String sql = "UPDATE boardView SET b_like=b_like + 1 WHERE b_no=?";
-			
-			try {
-				con = DBConnection.dbconn();
-				pstmt = con.prepareStatement(sql);
-				pstmt.setInt(1, b_no);
-				pstmt.execute();
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			
+		return result;
+
+	}
+
+	public void BoardLikeUp(int b_no) {
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE board SET B_LIKE = B_LIKE + 1 WHERE B_NO = ?";
+
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			pstmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+	}
+
 }

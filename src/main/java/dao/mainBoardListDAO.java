@@ -24,16 +24,16 @@ public class mainBoardListDAO {
 
 			BoardViewDTO dto = new BoardViewDTO();
 
-			dto.setB_no(rs.getInt(1));
-			dto.setB_title(rs.getString(2));
-			dto.setB_content(rs.getString(3));
-			dto.setB_date(rs.getString(4));
-			dto.setB_like(rs.getInt(5));
-			dto.setB_dislike(rs.getInt(6));
-			dto.setB_viewcount(rs.getInt(7));
-			dto.setB_del(rs.getInt(8));
-			dto.setM_nickname(rs.getString(9));
-			dto.setTotalcomments(rs.getInt(10));
+			dto.setB_no(rs.getInt("b_no"));
+			dto.setB_title(rs.getString("b_title"));
+			dto.setB_content(rs.getString("b_content"));
+			dto.setB_date(rs.getString("b_date"));
+			dto.setB_like(rs.getInt("b_like"));
+			dto.setB_dislike(rs.getInt("b_dislike"));
+			dto.setB_viewcount(rs.getInt("b_viewcount"));
+			dto.setB_del(rs.getInt("b_del"));
+			dto.setM_nickname(rs.getString("m_nickname"));
+			dto.setTotalcomments(rs.getInt("totalcomments"));
 
 			bBoardList.add(dto);
 		}
@@ -54,16 +54,16 @@ public class mainBoardListDAO {
 
 			BoardViewDTO dto = new BoardViewDTO();
 
-			dto.setB_no(rs.getInt(1));
-			dto.setB_title(rs.getString(2));
-			dto.setB_content(rs.getString(3));
-			dto.setB_date(rs.getString(4));
-			dto.setB_like(rs.getInt(5));
-			dto.setB_dislike(rs.getInt(6));
-			dto.setB_viewcount(rs.getInt(7));
-			dto.setB_del(rs.getInt(8));
-			dto.setM_nickname(rs.getString(9));
-			dto.setTotalcomments(rs.getInt(10));
+			dto.setB_no(rs.getInt("b_no"));
+			dto.setB_title(rs.getString("b_title"));
+			dto.setB_content(rs.getString("b_content"));
+			dto.setB_date(rs.getString("b_date"));
+			dto.setB_like(rs.getInt("b_like"));
+			dto.setB_dislike(rs.getInt("b_dislike"));
+			dto.setB_viewcount(rs.getInt("b_viewcount"));
+			dto.setB_del(rs.getInt("b_del"));
+			dto.setM_nickname(rs.getString("m_nickname"));
+			dto.setTotalcomments(rs.getInt("totalcomments"));
 
 			bBoardList.add(dto);
 		}
