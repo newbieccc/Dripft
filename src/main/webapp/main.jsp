@@ -57,7 +57,7 @@
 				<c:forEach items="${board}" var="i">
 					<tr>
 						<td>${i.b_no}</td>
-						<td>${i.b_title}</td>
+						<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a></td>
 						<td>${i.b_date}</td>
 						<td>좋아요 = ${i.b_like}</td>
 						<td>${i.b_dislike}</td>
@@ -74,7 +74,7 @@
 				<c:forEach items="${notice}" var="i">
 					<tr>
 						<td>${i.n_no}</td>
-						<td>${i.n_title}</td>
+						<td><a href="./noticeDetail?n_no=${i.n_no}">${i.n_title}</a></td>
 						<td>${i.n_date}</td>
 						<td>좋아요 = ${i.n_viewcount}</td>
 						<td>${i.m_nickname}</td>
