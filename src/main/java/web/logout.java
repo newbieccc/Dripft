@@ -36,7 +36,7 @@ public class logout extends HttpServlet {
 		if(!session.getAttribute("m_email").toString().isEmpty()) {
 			
 			session.removeAttribute("m_email");
-			session.removeAttribute("m_nincname");
+			session.removeAttribute("m_nickname");
 			
 			session.invalidate();
 			
