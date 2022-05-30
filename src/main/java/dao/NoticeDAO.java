@@ -43,7 +43,7 @@ public class NoticeDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM noticeView LIMIT ?, 10";
+		String sql = "SELECT * FROM noticeView WHERE n_del=0 LIMIT ?, 10 ";
 				
 		try {
 			con = DBConnection.dbconn();
