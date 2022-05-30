@@ -7,11 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>드립프트 Dripft</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	
 <script type="text/javascript" src="./js/common/jquery.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -22,8 +25,8 @@
 <body>
 	<jsp:include page="nav_main.jsp"></jsp:include>
 	<div class="container">
-		<div class="panel panel-info" style="width: 45%;">
-			<div class="panel-heading">인기게시글</div>
+		<div class="panel panel-info">
+			<span class="label label-info">인기 TOP20</span>
 			<table class="table table-primary table-hover"
 				style="font-size: 12px; text-align: center;">
 				<tbody>
@@ -52,7 +55,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="panel" style="background-color: limegreen; width: 45%;">
+		<div class="panel" style="background-color: limegreen;">
 			<table class="table" style="font-size: 12px;">
 				<c:forEach items="${board}" var="i">
 					<tr>
@@ -69,7 +72,7 @@
 			</table>
 		</div>
 		<div class="panel"
-			style="background-color: blue; width: 45%; float: bottom;">
+			style="background-color: blue;">
 			<table class="table" style="font-size: 12px;">
 				<c:forEach items="${notice}" var="i">
 					<tr>

@@ -22,11 +22,6 @@
 				<!-- <li class="nav-item"><a class="nav-link disabled" href="#" 
 					tabindex="-1" aria-disabled="true">Disabled</a></li>  -->
 			</ul>
-			<form class="d-flex">
-				<input class="form-control me-2" type="search" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
 			<ul class="navbar-nav me-2-auto mb-2 mb-lg-0">
 				<c:choose>
 					<c:when test="${sessionScope.m_email ne null}">
@@ -41,6 +36,11 @@
 					</c:otherwise>
 				</c:choose>
 			</ul>
+			<form class="d-flex">
+				<input class="form-control me-2" type="search" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
 		</div>
 	</div>
 </nav>
