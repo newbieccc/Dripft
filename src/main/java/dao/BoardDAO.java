@@ -16,8 +16,9 @@ public class BoardDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM boardView WHERE B_LIKE < 20 AND B_DEL = 0 LIMIT ?, 10";
 
+		String sql = "SELECT * FROM boardView WHERE B_LIKE < 20 AND B_DEL = 0 ORDER BY b_no desc LIMIT ?, 10";
+		
 		try {
 			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
@@ -33,7 +34,8 @@ public class BoardDAO {
 				dto.setB_content(rs.getString("b_content"));
 				dto.setB_dislike(rs.getInt("b_dislike"));
 				dto.setM_nickname(rs.getString("m_nickname"));
-
+				dto.setTotalcount(rs.getInt("totalcount"));
+				
 				list.add(dto);
 
 			}

@@ -11,7 +11,7 @@ public class BoardViewDTO {
 	private int b_viewcount;
 	private int b_del;
 	private String m_nickname;
-	private int totalcomments;
+	private int totalcomments, totalcount;
 	
 	public int getB_no() {
 		return b_no;
@@ -73,6 +73,11 @@ public class BoardViewDTO {
 	public void setB_del(int b_del) {
 		this.b_del = b_del;
 	}
-	
+	public int getTotalcount() {
+		return totalcount;
+	}
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
+	}
 	
 }
