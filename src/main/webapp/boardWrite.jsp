@@ -55,6 +55,7 @@
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
+	<%@include file="./nav_main.jsp" %>
 	<div id="main">
 		<form action="/dangun/market/write.do" method="post">
 			<input type="text" name="b_title">
