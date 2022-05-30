@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.JoinDAO;
+import dao.UserDAO;
 import dto.JoinDTO;
+import dto.LoginDTO;
 
 
 @WebServlet("/userUpdate")
@@ -35,7 +37,7 @@ public class UserUpdate extends HttpServlet {
 			dto = dao.userInfo(dto);
 			
 			
-			
+			//dao활용해서 유저 닉네임 받아오기 , request.setAttribute해서 jsp에 뿌려주기, 비밀번호변경 버튼 추가
 			
 			PrintWriter pw = response.getWriter();
 			pw.println("<html>");
@@ -62,8 +64,24 @@ public class UserUpdate extends HttpServlet {
 }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		doGet(request, response);
+		HttpSession session = request.getSession();
+		if(session.getAttribute("m_email") != null) {
+			LoginDTO dto = new LoginDTO();
+			
+			UserDAO dao = new UserDAO();
+			dto.setM_email((String) session.getAttribute("m_email"));
+			dto.setM_password(request.getParameter("m_password"));
+			//System.out.println(request.getParameter("m_password"));
+			dto.setM_name(request.getParameter("m_name"));
+			dto.setM_nickname(request.getParameter("m_nickname"));
+			dto.setM_birth(request.getParameter("m_birth"));
+			dto.setM_tel(request.getParameter("m_tel"));
+			dao.update(dto);
+			
+			response.sendRedirect("./login.jsp");
+		//	RequestDispatcher rd = request.getRequestDispatcher("./userInfo.jsp");
+		//	request.setAttribute("userInfo", dto);
+		}
 	}
 
 }
