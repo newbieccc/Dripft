@@ -11,7 +11,7 @@ if(cookie != null){
 			System.out.println(cookie[i].getValue());
 			id = cookie[i].getValue();
 		}
-		if(cookie[i].getName().equals("test")){
+		if(cookie[i].getName().equals("domain")){
 			domain = cookie[i].getValue();
 		}
 		if(cookie[i].getName().equals("id_rem")){
