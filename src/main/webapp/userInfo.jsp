@@ -21,12 +21,50 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 
+
 </script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<style>
+#main {
+	margin: 0 auto;
+	width: 800px;
+	height: 100%;
+}
+
+#userinfobox {
+	margin: 0 auto;
+	margin-top: 80px;
+	width: 430px;
+	min-height: 300px;
+	background-color: #F0FFF0;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	border-radius: 15px;
+}
+
+
+#userinfo button {
+	width: 150px;
+	border: 0px;
+	font-size: large;
+	font-weight: bold;
+	height: 40px;
+}
+
+
+</style>
+
 </head>
+
 <body>
   <%@include file="./nav_main.jsp" %>	
   <div id="main">
-      서버에서 오는 값 : ${userInfo } <br>
+  
+  	<div id="userinfobox">
+      <%-- 서버에서 오는 값 : ${userInfo } <br> --%>
       이메일 : ${userInfo.m_email } <br>
       비밀번호 : ${userInfo.m_password } <br>
       이름: ${userInfo.m_name } <br>
@@ -36,7 +74,8 @@
       폰번 : ${userInfo.m_tel } <br>
       등급 : ${userInfo.m_authority } <br>
       가입일 : ${userInfo.m_joindate }<br>
-      <button onclick = "location.href='./userUpdate'">정보수정</button>
+      <button onclick = "location.href='./userUpdate'" id="joinBtn" class="btn btn-light">정보수정</button>
    </div>
+ </div> 
 </body>
 </html>
