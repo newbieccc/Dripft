@@ -29,6 +29,7 @@ if(cookie != null){
 <head>
 <meta charset="UTF-8">
 <title>드립프트 Dripft - 로그인</title>
+<link rel="shortcut icon" type="image/x-icon" href="fabicon.ico" />
 <link href="./css/menu.css" rel="stylesheet">
 <style type="text/css">
 #main{

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>드립프트 Dripft - 게시글 수정</title>
+<link rel="shortcut icon" type="image/x-icon" href="fabicon.ico" />
 <style type="text/css">
 #main {
 	margin: 0 auto;
