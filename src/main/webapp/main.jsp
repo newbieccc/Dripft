@@ -27,63 +27,79 @@
 	<jsp:include page="nav_main.jsp"></jsp:include>
 	<div class="container">
 		<div class="panel panel-info">
-			<span class="label label-info">인기 TOP20</span>
+			<span class="badge bg-info text-dark">인기게시글</span>
 			<table class="table table-primary table-hover"
-				style="font-size: 12px; text-align: center;">
+				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
 					<tr>
-						<th>글번호</th>
-						<th>제목</th>
-						<th>작성일자</th>
-						<th>추천</th>
-						<th>비추</th>
-						<th>조회수</th>
-						<th>닉네임</th>
-						<th>댓글수</th>
+						<th width="10%">글번호</th>
+						<th width="35%">제목</th>
+						<th width="15%">작성자</th>
+						<th width="20%">작성일자</th>
+						<th width="10%">추천/비추천</th>
+						<th width="10%">조회수</th>
 					</tr>
 					<c:forEach items="${bboard}" var="i">
 						<tr>
 							<td>${i.b_no}</td>
-							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a></td>
-							<td>${i.b_date}</td>
-							<td>${i.b_like}</td>
-							<td>${i.b_dislike}</td>
-							<td>${i.b_viewcount}</td>
+							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${totalcomments}]</small></td>
 							<td>${i.m_nickname}</td>
-							<td>${i.totalcomments}</td>
+							<td>${i.b_date}</td>
+							<td>${i.b_like}/${i.b_dislike}</td>
+							<td>${i.b_viewcount}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<div class="panel" style="background-color: limegreen;">
-			<table class="table" style="font-size: 12px;">
-				<c:forEach items="${board}" var="i">
+		<div class="panel">
+			<span class="badge bg-secondary">일반게시글</span>
+			<table class="table table-warning table-hover"
+				style="font-size: 12px; text-align: center; vertical-align: middle;">
+				<tbody>
 					<tr>
-						<td>${i.b_no}</td>
-						<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a></td>
-						<td>${i.b_date}</td>
-						<td>좋아요 = ${i.b_like}</td>
-						<td>${i.b_dislike}</td>
-						<td>${i.b_viewcount}</td>
-						<td>${i.m_nickname}</td>
-						<td>${i.totalcomments}</td>
+						<th width="10%">글번호</th>
+						<th width="35%">제목</th>
+						<th width="15%">작성자</th>
+						<th width="20%">작성일자</th>
+						<th width="10%">추천/비추천</th>
+						<th width="10%">조회수</th>
 					</tr>
-				</c:forEach>
+					<c:forEach items="${board}" var="i">
+						<tr>
+							<td>${i.b_no}</td>
+							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${totalcomments}]</small></td>
+							<td>${i.m_nickname}</td>
+							<td>${i.b_date}</td>
+							<td>${i.b_like}/${i.b_dislike}</td>
+							<td>${i.b_viewcount}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</div>
-		<div class="panel"
-			style="background-color: blue;">
-			<table class="table" style="font-size: 12px;">
-				<c:forEach items="${notice}" var="i">
+		<div class="panel">
+			<span class="badge bg-danger">공지사항</span>
+			<table class="table table-dark table-hover"
+				style="font-size: 12px; text-align: center; vertical-align: middle;">
+				<tbody>
 					<tr>
-						<td>${i.n_no}</td>
-						<td><a href="./noticeDetail?n_no=${i.n_no}">${i.n_title}</a></td>
-						<td>${i.n_date}</td>
-						<td>좋아요 = ${i.n_viewcount}</td>
-						<td>${i.m_nickname}</td>
+						<th width="10%">글번호</th>
+						<th width="50%">제목</th>
+						<th width="10%">작성자</th>
+						<th width="20%">작성일자</th>
+						<th width="10%">조회수</th>
 					</tr>
-				</c:forEach>
+					<c:forEach items="${notice}" var="i">
+						<tr>
+							<td>${i.b_no}</td>
+							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${totalcomments}]</small></td>
+							<td>${i.m_nickname}</td>
+							<td>${i.b_date}</td>
+							<td>${i.b_viewcount}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 		</div>
 	</div>
