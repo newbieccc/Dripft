@@ -53,7 +53,7 @@
 			</table>
 		</div>
 		<div class="panel">
-			<span class="badge bg-secondary">일반게시글</span>
+			<span class="badge bg-warning text-dark">일반게시글</span>
 			<table class="table table-warning table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
@@ -79,7 +79,7 @@
 			</table>
 		</div>
 		<div class="panel">
-			<span class="badge bg-danger">공지사항</span>
+			<span class="badge bg-dark">공지사항</span>
 			<table class="table table-dark table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
