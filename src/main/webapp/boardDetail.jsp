@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>드립프트 Dripft - 게시글</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -17,6 +17,13 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+<!-- <script>
+    document.title = "./boardDetail?b_title=?";
+</script> -->
+<!-- <script>
+	document.write ( '<p>' + document.title + '</p>' );
+	document.title = './boardDetail?b_title=?';
+</script> -->
 </head>
 <body>
 	<%@include file="./nav_main.jsp" %>	

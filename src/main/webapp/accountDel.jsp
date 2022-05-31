@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 탈퇴</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 function delCheck() {
@@ -15,7 +15,7 @@ function delCheck() {
 	//alert(id + "님은 탈퇴하시겠습니까?");
 	if(id != '탈퇴'){
 		$("#checkResult").css("color", "red");
-		$("#checkResult").text("탈퇴라고 입력하라고!!!");
+		$("#checkResult").text("탈퇴를 입력해주세요.");
 		$("#delBtn").attr("disabled", true);
 	} else {
 		$("#checkResult").css("color", "green");
@@ -25,7 +25,7 @@ function delCheck() {
 }
 function check() {
 	var form = document.delform;
-	alert("탈퇴하였읍니다 ^.^!!!!!!");
+	alert("탈퇴하였습니다.");
 }
 
 </script>

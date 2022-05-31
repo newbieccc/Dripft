@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>드립프트 Dripft - 게시글 수정</title>
 <style type="text/css">
 #main {
 	margin: 0 auto;

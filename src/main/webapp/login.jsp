@@ -28,7 +28,7 @@ if(cookie != null){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>드립프트 Dripft - 로그인</title>
 <link href="./css/menu.css" rel="stylesheet">
 <style type="text/css">
 #main{
