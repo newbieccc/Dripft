@@ -65,6 +65,7 @@ h3 {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     margin: auto;
+    text-align: center;
 }
 .form-group {
 	margin-bottom: 15px;
@@ -76,9 +77,9 @@ p {
 	border-width: 1px;
 	border: 1px;
 	background-color: #f8f8f8;
-}
-input {
-	width: 100px;
+	position: absolute;
+  	left: 50%;
+  	transform: translateX(-50%);
 }
 </style>
 </head>
@@ -107,6 +108,5 @@ input {
 				</div>
 			</form>
 		</div>
-	<hr>	
 </body>
 </html>
