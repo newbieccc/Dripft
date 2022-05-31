@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="container-fluid" style="background-color: rgb(180, 255, 209);">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Jua', sans-serif; font-size: 20px">
+	<div class="container-fluid" style="background-color: rgb(189, 255, 200); border-radius: 5px;">
 		<a class="navbar-brand" href="./main"><img src="./img/logo.png"
 			height="35px"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
