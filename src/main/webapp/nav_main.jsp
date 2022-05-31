@@ -27,6 +27,7 @@
 					<c:when test="${sessionScope.m_email ne null}">
 						<li class="nav-item"><a class="nav-link active"
 							href="./logout">로그아웃</a></li>
+						<li class="nav-item"><a class="nav-link active" href="./userInfo">유저정보</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a class="nav-link active"
