@@ -90,7 +90,7 @@ p {
 			<form name="idFind"  action="./idFind" method="post">
 			<div class="col-sm-8 col-sm-offset-2">
 			    <div class="panel panel-default panel-margin-10">
-			        <div class="panel-body panel-body-content text-center">
+			        <div class="panel-body panel-body-content text-center" style="width: 600px;">
 			        <br>
 			            <p class="lead">이름과 전화번호를 입력해 주세요.</p>
 			            	<p>회원 가입시 입력하신 이름과 전화번호를 입력하시면,<br> 하단에 이메일 계정을 알려드립니다.</p>
