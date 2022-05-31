@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>드립프트 Dripft - 게시판</title>
-<link rel="shortcut icon" type="image/x-icon" href="fabicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"

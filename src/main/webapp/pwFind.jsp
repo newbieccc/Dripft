@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>드립프트 Dripft - 비밀번호 재설정</title>
-<link rel="shortcut icon" type="image/x-icon" href="fabicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 </script>
