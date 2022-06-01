@@ -14,23 +14,28 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
 <script type="text/javascript" src="./js/common/jquery.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap"
+	rel="stylesheet">
 </head>
 
 <body>
 	<jsp:include page="nav_main.jsp"></jsp:include>
 	<div class="container">
+		<span class="badge bg-info text-dark" onclick="">인기게시글</span>
+		<span class="badge bg-warning text-dark" onclick="">일반게시글</span>
+		<span class="badge bg-dark" onclick="">공지사항</span>
 		<div class="panel panel-info">
-			<span class="badge bg-info text-dark">인기게시글</span>
 			<table class="table table-primary table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
@@ -45,7 +50,8 @@
 					<c:forEach items="${bboard}" var="i">
 						<tr>
 							<td>${i.b_no}</td>
-							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${i.totalcomments}]</small></td>
+							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small
+								style="color: green">[${i.totalcomments}]</small></td>
 							<td>${i.m_nickname}</td>
 							<td>${i.b_date}</td>
 							<td>${i.b_like}/${i.b_dislike}</td>
@@ -56,7 +62,6 @@
 			</table>
 		</div>
 		<div class="panel">
-			<span class="badge bg-warning text-dark">일반게시글</span>
 			<table class="table table-warning table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
@@ -71,7 +76,8 @@
 					<c:forEach items="${board}" var="i">
 						<tr>
 							<td>${i.b_no}</td>
-							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${totalcomments}]</small></td>
+							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small
+								style="color: green">[${totalcomments}]</small></td>
 							<td>${i.m_nickname}</td>
 							<td>${i.b_date}</td>
 							<td>${i.b_like}/${i.b_dislike}</td>
@@ -82,7 +88,6 @@
 			</table>
 		</div>
 		<div class="panel">
-			<span class="badge bg-dark">공지사항</span>
 			<table class="table table-dark table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
