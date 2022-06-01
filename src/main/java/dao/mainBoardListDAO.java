@@ -62,6 +62,7 @@ public class mainBoardListDAO {
 			dto.setB_dislike(rs.getInt("b_dislike"));
 			dto.setB_viewcount(rs.getInt("b_viewcount"));
 			dto.setB_del(rs.getInt("b_del"));
+			
 			dto.setM_nickname(rs.getString("m_nickname"));
 			dto.setTotalcomments(rs.getInt("totalcomments"));
 

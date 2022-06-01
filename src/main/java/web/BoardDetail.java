@@ -23,7 +23,8 @@ public class BoardDetail extends HttpServlet {
 			throws ServletException, IOException {
 
 		int b_no = Integer.parseInt(request.getParameter("b_no"));
-
+		String s_email = (String) request.getSession().getAttribute("m_email");
+		
 		BoardDAO boarddao = new BoardDAO();
 		CommentsDAO commentdao = new CommentsDAO();
 		Cookie[] cookies = request.getCookies();
@@ -53,7 +54,8 @@ public class BoardDetail extends HttpServlet {
 		try {
 			BoardViewDTO dto = boarddao.boardDetail(b_no);
 			List<CommentViewDTO> commentList = commentdao.commentsList(b_no);
-
+			
+			if(boarddao.BoardWriterCheck(s_email, b_no) == 1) request.setAttribute("writerCheck", 1);
 			request.setAttribute("list", dto);
 			request.setAttribute("commentList", commentList);
 		} catch (Exception e) {

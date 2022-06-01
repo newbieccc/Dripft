@@ -18,6 +18,11 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap"
+	rel="stylesheet">
 <!-- <script>
     document.title = "./boardDetail?b_title=?";
 </script> -->
@@ -25,35 +30,68 @@
 	document.write ( '<p>' + document.title + '</p>' );
 	document.title = './boardDetail?b_title=?';
 </script> -->
+<script type="text/javascript">
+	function needLogin() {
+
+		alert("로그인페이지로 이동합니다.");
+		location.href = "./login.jsp";
+	}
+
+	function doLike() {
+
+		location.href = "./boardLike?b_no=${list.b_no}&action=like";
+	}
+
+	function doDislike() {
+		location.href = "./boardLike?b_no=${list.b_no}&action=dislike";
+	}
+</script>
 </head>
 <body>
-	<%@include file="./nav_main.jsp" %>	
-	<a href="./boardChange?b_no=${list.b_no}&del=0">글수정</a>
-	<a href="./boardChange?b_no=${list.b_no}&del=1">글삭제</a>
-	<a href="./boardLike?b_no=${list.b_no}&action=like">좋아요</a>
-	<a href="./boardLike?b_no=${list.b_no}&action=dislike">싫어요</a> 
-	${list.b_no}
-	${list.b_title} ${list.b_content} ${list.b_date} ${list.b_like}
-	${list.b_dislike} ${list.b_viewcount} ${list.m_nickname}
-	${list.totalcomments}
+	<%@include file="./nav_main.jsp"%>
+	<div class="container">
+		 제목 : ${list.b_title}<small style="color: green"> [${list.totalcomments}]</small><br>
+		 작성자 : ${list.m_nickname}<br>
+		 <small>번호 : ${list.b_no}</small><br>
+		 조회수 ${list.b_viewcount}<br>
+		 작성일 ${list.b_date}<br>
+		<c:if test="${writerCheck ==  1 }">
+			<a href="./boardChange?b_no=${list.b_no}&del=0">글수정</a>
+			<a href="./boardChange?b_no=${list.b_no}&del=1">글삭제</a>
+		</c:if><br>
+	
+		<img src="./img/like.png" height="30px" onclick="doLike()">
+		<c:choose>
+			<c:when test="${sessionScope.m_email ne null}">
+				<img src="./img/dislike.png" height="30px" onclick="doDislike()">
+			</c:when>
+			<c:otherwise>
+				<img src="./img/dislike.png" height="30px" onclick="needLogin()">
+			</c:otherwise>
+		</c:choose>
+		<small style="color: blue">${list.b_like }</small> / <small style="color : red">${list.b_dislike }</small><br>
+		${list.b_content}
 
-	<table>
-		<c:forEach items="${commentList}" var="i">
-			<tr>
-				<td>${i.c_content }</td>
-				<td>${i.c_date }</td>
-				<td>${i.c_like }</td>
-				<td>${i.c_dislike }</td>
-				<td>${i.m_nickname }</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<form action="./commentWrite" method="post">
-		<input type="text" name="c_content">
-		<input type = "hidden" name = "b_no" value="${list.b_no}">
-		<button type="submit">댓글쓰기</button>
-	</form>
-	<a href="./logout">로그아웃</a>
-	<%= request.getParameter("error") %>
+		<form action="./commentWrite" method="post">
+			<hr color="gray">
+			<div class="input-group mb-3">
+				<input type="hidden" name="b_no" value="${list.b_no}"> <input
+					type="text" class="form-control" aria-describedby="button-addon2"
+					name="c_content">
+				<button class="btn btn-outline-secondary" id="button-addon2"
+					type="submit">댓글쓰기</button>
+			</div>
+		</form>
+		<table class= "table">
+			<c:forEach items="${commentList}" var="i">
+				<tr>
+					<td><img src = "./img/user_smile.png" height="30px">${i.m_nickname }</td>
+					<td>${i.c_content }</td>
+					<td>${i.c_date }</td>
+					<td><small style="color: blue">${i.c_like }</small> / <small style="color : red">${i.c_dislike }</small></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

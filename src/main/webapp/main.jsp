@@ -45,7 +45,7 @@
 					<c:forEach items="${bboard}" var="i">
 						<tr>
 							<td>${i.b_no}</td>
-							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${totalcomments}]</small></td>
+							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${i.totalcomments}]</small></td>
 							<td>${i.m_nickname}</td>
 							<td>${i.b_date}</td>
 							<td>${i.b_like}/${i.b_dislike}</td>
@@ -95,11 +95,11 @@
 					</tr>
 					<c:forEach items="${notice}" var="i">
 						<tr>
-							<td>${i.b_no}</td>
-							<td><a href="./boardDetail?b_no=${i.b_no}">${i.b_title}</a><small style="color: green">[${totalcomments}]</small></td>
+							<td>${i.n_no}</td>
+							<td><a href="./boardDetail?b_no=${i.n_no}">${i.n_title}</a></td>
 							<td>${i.m_nickname}</td>
-							<td>${i.b_date}</td>
-							<td>${i.b_viewcount}</td>
+							<td>${i.n_date}</td>
+							<td>${i.n_viewcount}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

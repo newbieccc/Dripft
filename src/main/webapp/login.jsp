@@ -145,8 +145,8 @@ p {
 
             <form action="./login" class="form-signin form-user panel-body panel-margin" method="post" id="loginForm" autocomplete="off">
                     <input type="hidden" name="redirectUrl" value="%2Farticles%2Fquestions">
-                <input type="email" name="username" value="<%=id %>" autocorrect="off" autocapitalize="off"  id="username" class="username form-control input-sm" placeholder="이메일" required="" autofocus="">
-                <input type="password" name="password" class="password form-control input-sm" placeholder="비밀번호" required="">
+                <input type="email" name="m_email" value="<%=id %>" autocorrect="off" autocapitalize="off"  id="username" class="username form-control input-sm" placeholder="이메일" required="" autofocus="">
+                <input type="password" name="m_password" class="password form-control input-sm" placeholder="비밀번호" required="">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="id_rem" id="id_rem" <%=id_rem%>> 로그인 유지
