@@ -246,4 +246,50 @@ public class BoardDAO {
 
 	}
 
+	public List<BoardViewDTO> bestBoardList(int b_no) {
+		List<BoardViewDTO> list = new ArrayList<BoardViewDTO>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql = "SELECT * FROM bestBoardView WHERE B_LIKE >= 20 AND B_DEL = 0 ORDER BY b_no desc LIMIT ?, 10";
+		
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, b_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BoardViewDTO dto = new BoardViewDTO();
+				dto.setB_no(rs.getInt("b_no"));
+				dto.setB_title(rs.getString("b_title"));
+				dto.setB_date(rs.getString("b_date"));
+				dto.setB_like(rs.getInt("b_like"));
+				dto.setB_viewcount(rs.getInt("b_viewcount"));
+				dto.setB_content(rs.getString("b_content"));
+				dto.setB_dislike(rs.getInt("b_dislike"));
+				dto.setM_nickname(rs.getString("m_nickname"));
+				dto.setTotalcount(rs.getInt("totalcount"));
+				dto.setTotalcomments(rs.getInt("totalcomments"));
+				
+				list.add(dto);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
 }
