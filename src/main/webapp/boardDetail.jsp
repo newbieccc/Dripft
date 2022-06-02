@@ -60,6 +60,24 @@
 		}
 		
 	}
+	
+	function report(){
+		var result = confirm('글을 신고하시겠습니까?');
+		if(result){
+			
+			var reason = prompt("신고사유를 입력해주세요");
+
+			$.ajax({
+				type:'post',
+				url : './report',
+				dataType : 'text',
+				data : "reason=" + reason,
+				success : function(reason){
+        			alert(reason);
+        		} 
+			});
+		}
+	}
 </script>
 </head>
 <body>
@@ -70,6 +88,7 @@
 				<div class="p-3 border bg-light">
 					제목 : ${list.b_title}<small style="color: green">
 						[${list.totalcomments}]</small>
+						<img alt="" src="./img/report.png" height="20px" onclick="report()">
 					<c:if test="${writerCheck ==  1 }">
 						<button type="button" class="btn btn-outline-primary" onclick="doBoardChange()">글수정</button>
 						<button type="button" class="btn btn-outline-danger" onclick="doBoardDelete()">글삭제</button>
@@ -86,11 +105,11 @@
 			</div>
 			<div class="col-6">
 				<div class="p-3 border bg-light">
-					작성일 : ${list.b_date} <small>번호 : ${list.b_no}</small>
+					작성일 : ${list.b_date} <small style="color : gray;">번호 : ${list.b_no}</small>
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="p-3 border bg-light">
+				<div class="p-3 border bg-light">추천/비추천 
 					<small style="color: blue">${list.b_like }</small> / <small
 						style="color: red">${list.b_dislike }</small> <img
 						src="./img/like.png" height="30px" onclick="doLike()">
@@ -131,5 +150,6 @@
 			</c:forEach>
 		</table>
 	</div>
+	<%@include file="./footer.jsp"%>
 </body>
 </html>
