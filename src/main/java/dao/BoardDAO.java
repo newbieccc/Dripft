@@ -83,6 +83,28 @@ public class BoardDAO {
 		}
 		return dto;
 	}
+	
+	public int boardWrite(BoardDTO dto) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "INSERT INTO board(m_email, b_title, b_content) VALUES(?,?,?)";
+		int result = 0;
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dto.getB_email());
+			pstmt.setString(2, dto.getB_title());
+			pstmt.setString(3, dto.getB_content());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 	public int BoardChange(BoardDTO dto) {
 

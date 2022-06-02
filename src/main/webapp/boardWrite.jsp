@@ -58,8 +58,8 @@
 <body>
 	<%@include file="./nav_main.jsp" %>
 	<div id="main">
-		<form action="/dangun/market/write.do" method="post">
-			<input type="text" name="b_title">
+		<form action="./boardWrite?write=1" method="post">
+					<input type="text" name="b_title">
 			<textarea name="b_content" id="summernote"></textarea>
 
 			<button id="btn" type="submit">글쓰기</button>
