@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -8,6 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>드립프트 Dripft - 게시판</title>
+<style type="text/css">
+table {
+	text-align: center;
+}
+td {
+	
+}
+</style>
 <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -22,7 +29,8 @@
 </head>
 <body>
 	<%@include file="./nav_main.jsp" %>	
-	<table>
+	<table id="list" style="width: 100%;" class="table table-primary table-hover"
+				style="font-size: 12px; text-align: center; vertical-align: middle;">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -46,15 +54,16 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="./boardWrite?write=0"><button style="width: 15%; margin-left: 40%;">글쓰기</button></a>
+	
 	<hr>
-	pageNo = ${pageNo } <br> totalcount = ${totalcount }<br>
-	totalpage = <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
+	<%-- pageNo = ${pageNo } <br> totalcount = ${totalcount }<br> --%>
+	<!-- totalpage = --> <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
 			<c:if test="${(totalcount % 10) > 0 }">
 				<c:set var="totalpage" value="${totalpage + 1}" />
 			</c:if>
-	변환된 : ${totalpage } <br>
+	<%-- 변환된 : ${totalpage } <br> --%>
 	<hr>
-	
 	<!-- 페이지 시작,끝 번호 버튼 선언 -->
 	<c:if test="${pageNo % 10 ne 0 }">
 		<fmt:parseNumber integerOnly="true" var="startpage" value="${pageNo / 10 }"/>
@@ -63,12 +72,12 @@
 	<c:if test="${pageNo % 10 eq 0 }">
 		<c:set var="startpage" value="${pageNo - 9 }" />
 	</c:if>
-	startpage : ${startpage } <br>
+	<%-- startpage : ${startpage } <br> --%>
 	<c:set var="endpage" value="${startpage + 9 }" />
 	<c:if test="${startpage + 10 gt totalpage }">
 		<c:set var="endpage" value="${totalpage }" />
 	</c:if>
-	endpage : ${endpage }
+	<%-- endpage : ${endpage } --%>
 	<hr>
 	
 	<button onclick="location.href='./boardlist?pageNo=1'">앞으로</button>

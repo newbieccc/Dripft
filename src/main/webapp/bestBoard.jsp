@@ -47,12 +47,12 @@
 		</c:forEach>
 	</table>
 	<hr>
-	pageNo = ${pageNo } <br> totalcount = ${totalcount }<br>
-	totalpage = <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
+	<%-- pageNo = ${pageNo } <br> totalcount = ${totalcount }<br> --%>
+	<!-- totalpage = --> <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
 			<c:if test="${(totalcount % 10) > 0 }">
 				<c:set var="totalpage" value="${totalpage + 1}" />
 			</c:if>
-	변환된 : ${totalpage } <br>
+	<%-- 변환된 : ${totalpage } --%> <br>
 	<hr>
 	
 	<!-- 페이지 시작,끝 번호 버튼 선언 -->
@@ -63,12 +63,12 @@
 	<c:if test="${pageNo % 10 eq 0 }">
 		<c:set var="startpage" value="${pageNo - 9 }" />
 	</c:if>
-	startpage : ${startpage } <br>
+	<%-- startpage : ${startpage } --%> <br>
 	<c:set var="endpage" value="${startpage + 9 }" />
 	<c:if test="${startpage + 10 gt totalpage }">
 		<c:set var="endpage" value="${totalpage }" />
 	</c:if>
-	endpage : ${endpage }
+	<%-- endpage : ${endpage } --%>
 	<hr>
 	
 	<button onclick="location.href='./bestBoardList?pageNo=1'">앞으로</button>

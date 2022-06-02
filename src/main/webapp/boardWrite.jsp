@@ -59,10 +59,10 @@
 	<%@include file="./nav_main.jsp" %>
 	<div id="main">
 		<form action="./boardWrite?write=1" method="post">
-					<input type="text" name="b_title">
-			<textarea name="b_content" id="summernote"></textarea>
+					<input type="text" pattern=".{5,20}"title="5자리 이상 20자리 이내를 입력하세요" name="b_title" >
+			<textarea required="required" name="b_content" id="summernote" ></textarea>
 
-			<button id="btn" type="submit">글쓰기</button>
+			<button id="btn" type="submit" >글쓰기</button>
 		</form>
 	</div>
 	<script type="text/javascript">
