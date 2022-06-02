@@ -55,7 +55,7 @@
 	변환된 : ${totalpage } <br>
 	<hr>
 	
-	<!-- 페이지 시작,끝 번호 -->
+	<!-- 페이지 시작,끝 번호 버튼 선언 -->
 	<c:if test="${pageNo % 10 ne 0 }">
 		<fmt:parseNumber integerOnly="true" var="startpage" value="${pageNo / 10 }"/>
 		<c:set var="startpage" value="${startpage * 10 + 1 }" />
@@ -64,7 +64,7 @@
 		<c:set var="startpage" value="${pageNo - 9 }" />
 	</c:if>
 	startpage : ${startpage } <br>
-		
+	<c:set var="endpage" value="${startpage + 9 }" />
 	<c:if test="${startpage + 10 gt totalpage }">
 		<c:set var="endpage" value="${totalpage }" />
 	</c:if>
