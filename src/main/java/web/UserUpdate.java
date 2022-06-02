@@ -48,7 +48,6 @@ public class UserUpdate extends HttpServlet {
 			pw.println("<h1>" + dto.getM_email() + "님의 정보보기</h1>");
 			pw.println("아이디 : " + dto.getM_email() +"<br>");
 			pw.println("암호 :" + dto.getM_password() + "<br>");
-			pw.println("이름 :" + dto.getM_name() + "<br>");
 			pw.println("닉네임 :" + dto.getM_nickname() + "<br>");
 			pw.println("생일 :" + dto.getM_birth() + "<br>");
 			pw.println("성별 :" + dto.getM_gender() + "<br>");
@@ -72,7 +71,7 @@ public class UserUpdate extends HttpServlet {
 			dto.setM_email((String) session.getAttribute("m_email"));
 			dto.setM_password(request.getParameter("m_password"));
 			//System.out.println(request.getParameter("m_password"));
-			dto.setM_name(request.getParameter("m_name"));
+			//dto.setM_name(request.getParameter("m_name"));
 			dto.setM_nickname(request.getParameter("m_nickname"));
 			dto.setM_birth(request.getParameter("m_birth"));
 			dto.setM_tel(request.getParameter("m_tel"));

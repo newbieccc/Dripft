@@ -173,7 +173,7 @@
 				<input type="radio" name="m_gender" value="male" class="custom-control-input">남자 
 				<input type="radio"	name="m_gender" value="female" class="custom-control-input">여자 
 				<input	type="tel" name="m_tel" placeholder="전화번호를 입력하세요"	class="form-control">
-				<button type="submit" id="joinBtn" class="btn btn-success">가입하기</button>
+				<button type="submit" id="joinBtn" class="btn btn-outline-success">가입하기</button>
 			</form>
 		</div>
 

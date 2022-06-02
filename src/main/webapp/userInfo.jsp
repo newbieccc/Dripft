@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/userInfo.css"> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,55 +27,96 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
-<style>
-#main {
-	margin: 0 auto;
-	width: 800px;
-	height: 100%;
-}
-
-#userinfobox {
-	margin: 0 auto;
-	margin-top: 80px;
-	width: 430px;
-	min-height: 300px;
-	background-color: #F0FFF0;
-	padding: 10px;
-	box-sizing: border-box;
-	text-align: center;
-	border-radius: 15px;
-}
 
 
-#userinfo button {
-	width: 150px;
-	border: 0px;
-	font-size: large;
-	font-weight: bold;
-	height: 40px;
-}
-
-
-</style>
 
 </head>
-
+<script src="resources/js/bootstrap.js"></script>
 <body>
-  <%@include file="./nav_main.jsp" %>	
-  <div id="main">
+  <%@include file="./nav_main.jsp" %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="main-content">
+            
+        	<div class="tab-content profile-page">
+        		<!-- PROFILE TAB CONTENT -->
+        		<div class="tab-pane profile active" id="profile-tab">
+        			<div class="row">
+        				<div class="col-md-3">
+        					<div class="user-info-left">
+        						<img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Profile Picture" width=300px;>
+        						<h2>${userInfo.m_email }<br><i class="fa fa-circle green-font online-icon"></i><sup class="sr-only">online</sup></h2>
+        						
+        					</div>
+        				</div>
+        				<div class="col-md-8" >
+        					<div class="user-info-right">
+        						<div class="basic-info">
+        							<h3 style = "font-size:5em;"><i class="fa fa-user activity-icon pull-left"></i>${userInfo.m_email }님의 정보</h3>
+        							<p class="data-row">
+        								<span class="data-name" style = "font-size:2em;">Email</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_email }</span>
+        							</p>
+        							<p class="data-row">
+        							
+        								<span class="data-name" style = "font-size:2em;">이름</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_name }</span>
+        							</p>
+        							<p class="data-row">
+        							
+        								<span class="data-name" style = "font-size:2em;">닉네임</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_nickname }</span>
+        							</p>
+        							<p class="data-row">
+        							
+        								<span class="data-name" style = "font-size:2em;">생년월일</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_birth }</span>
+        							</p>
+        							<p class="data-row">
+        							
+        								<span class="data-name" style = "font-size:2em;">성별</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_gender }</span>
+        							</p>
+        							<p class="data-row">
+        							
+        								<span class="data-name" style = "font-size:2em;">전화번호</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_tel }</span>
+        							</p>
+        							
+        							<p class="data-row">
+        							
+        								<span class="data-name" style = "font-size:2em;">등급</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_authority }</span>
+        							</p>
+        							
+        							<p class="data-row">
+        							
+        								<span class="data-name" style = "font-size:2em;">가입날짜</span>
+        								<span class="data-value" style = "font-size:2em;">${userInfo.m_joindate }</span>
+        							</p>
+        							
+        							
+        						</div>
+        						<button onclick = "location.href='./userUpdate'" id="joinBtn" class="btn btn-outline-success" style = "font-size:2em;">정보수정</button>
+        						
+        						
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        		<!-- END PROFILE TAB CONTENT -->
+        
+        		
+        		
+        
+        		 
   
-  	<div id="userinfobox">
+  
+  
+  	
       <%-- 서버에서 오는 값 : ${userInfo } <br> --%>
-      이메일 : ${userInfo.m_email } <br>
-      비밀번호 : ${userInfo.m_password } <br>
-      이름: ${userInfo.m_name } <br>
-      닉네임: ${userInfo.m_nickname } <br>
-      생일 : ${userInfo.m_birth } <br>
-      성별 : ${userInfo.m_gender } <br>
-      폰번 : ${userInfo.m_tel } <br>
-      등급 : ${userInfo.m_authority } <br>
-      가입일 : ${userInfo.m_joindate }<br>
-      <button onclick = "location.href='./userUpdate'" id="joinBtn" class="btn btn-light">정보수정</button>
+      
    </div>
  </div> 
 </body>

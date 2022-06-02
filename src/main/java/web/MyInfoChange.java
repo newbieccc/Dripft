@@ -48,7 +48,7 @@ public class MyInfoChange extends HttpServlet {
 			response.sendRedirect("./userInfo");
 			
 		} else {
-			//System.out.println("333");
+			//System.o ut.println("333");
 			response.sendRedirect("./userInfo");
 			
 		}
