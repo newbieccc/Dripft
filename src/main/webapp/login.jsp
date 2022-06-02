@@ -8,7 +8,6 @@ String id_rem = null;
 if(cookie != null){
 	for(int i = 0; i < cookie.length; i++){
 		if(cookie[i].getName().trim().equals("id")){
-			System.out.println(cookie[i].getValue());
 			id = cookie[i].getValue();
 		}
 		if(cookie[i].getName().equals("domain")){
@@ -130,45 +129,53 @@ p {
   	left: 50%;
   	transform: translateX(-50%);
 }	
+div{
+	text-align: center;
+	padding: 5px;
+}
+body {
+	background-image: url('img/logo.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: rgba(0, 0, 0, 0.5);
+}
 </style>
 </head>
 <body>
 	<%@include file="./nav_main.jsp" %>
-	
 	<div id="edit-user" class="content" role="main">
-    <h3 class="content-header">로그인</h3>
+    <h2 class="content-header" style="color: white;">로그인</h2>
     <div class="col-md-6 main-block-left">
         <div class="panel panel-default" style="width: 550px;">
             <div class="panel-heading">
-                <h5 class="panel-header">아이디 로그인</h5>
-            </div>
 
             <form action="./login" class="form-signin form-user panel-body panel-margin" method="post" id="loginForm" autocomplete="off">
                     <input type="hidden" name="redirectUrl" value="%2Farticles%2Fquestions">
-                <input type="email" name="m_email" value="<%=id %>" autocorrect="off" autocapitalize="off"  id="username" class="username form-control input-sm" placeholder="이메일" required="" autofocus="">
-                <input type="password" name="m_password" class="password form-control input-sm" placeholder="비밀번호" required="">
+                <input type="email" name="m_email" value="<%=id %>" autocorrect="off" autocapitalize="off"  id="username" class="username form-control input-sm" placeholder="E-MAIL" required="required" autofocus="autofocus" style="text-align: center;">
+                <input type="password" name="m_password" class="password form-control input-sm" placeholder="PassWord" required="required" style="text-align: center;">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" name="id_rem" id="id_rem" <%=id_rem%>> 로그인 유지
-					<%if(id.length() > 1) out.println("checked"); %>
+                        <input type="checkbox" name="id_rem" id="id_rem" <%=id_rem%>> 아이디 기억
+					<%if(id.length() > 1) ; %>
                     </label>
                 </div>
                 
                 <div id="divUserLogin">
-                    <button class="btn btn-primary btn-block" type="submit" id="btnUserLogin">로그인</button>
+                    <button class="btn btn-primary btn-block" type="submit" id="btnUserLogin" style="width: 30%;">로그인</button>
                 </div>
-                <div class="signup-block">
+                <div class="signup-block" >
          	 	    <a href="join.jsp">회원가입</a>
                     <span class="inline-saperator">/</span>
                     <a href="./idFind.jsp">계정 찾기</a>
                     <span class="inline-saperator">/</span>
-                    <a href="./join.jsp">회원 가입</a>
+                    <a href="./pwFind.jsp">비밀번호 재설정</a>
+                    
                 </div>
             </form>
         </div>
     </div>
 </div>
-
+</div>
 	<%-- <div id="main">
 		<div id="loginform">
 			<form action="./login" method="post" >
