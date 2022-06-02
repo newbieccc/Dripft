@@ -24,22 +24,6 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
-function id_Search() {
-	var id = document.idFind;
-	
- 	if (id.m_name.value.length < 1) {
-	  alert("이름을 입력해주세요");
-	  return;
-	 }
-
-	 if (id.m_tel.value.length < 1) {
-		alert("핸드폰번호를 정확하게 입력해주세요");
-		return;
-	 }
- id.method = "post";
- id.action = "idFind";
- id.submit();  
-}
 </script>
 <style type="text/css">
 .content {
@@ -88,28 +72,16 @@ p {
 <jsp:include page="nav_main.jsp"></jsp:include>
 	<div id="create-user" class="content" role="main">
 		<h3 id="content-heade">계정 찾기</h3>
-			<form name="idFind"  action="./idFind" method="post">
 			<div class="col-sm-8 col-sm-offset-2">
 			    <div class="panel panel-default panel-margin-10">
 			        <div class="panel-body panel-body-content text-center" style="width: 600px;">
 			        <br>
-			            <p class="lead">이름과 전화번호를 입력해 주세요.</p>
-			            	<p>회원 가입시 입력하신 이름과 전화번호를 입력하시면,<br> 하단에 이메일 계정을 알려드립니다.</p>
+			            <p class="lead">해당 계정을 찾을 수 없습니다.</p>
+			            	<p>다시 입력 하시려면 돌아가기 버튼을 눌러주세요.<br></p>
 			            		<div class="form-group">
-			            	    <input type="text" name="m_name" class="form-control form-control-inline text-center" placeholder="이름" value="" required="required">
-			            	    <input type="text" name="m_tel" class="form-control form-control-inline text-center" placeholder="전화번호" value="" required="required">
 			        	    </div>
-			    	        <button type="submit" class="btn btn-primary" onClick="id_Search()">계정 찾기</button> <a href="./main" class="btn btn-default">취소</a>
+			    	        <button class="btn btn-primary" onclick="location.href='./idFind.jsp'">돌아가기</button> <a href="./main" class="btn btn-default">메인으로</a>
 			    	        <br>
-			    	        <br>
-			    	        <!-- <div id="checkResult">이 자리는 변경 자리</div><br> -->
-							<% String m_email = (String)request.getAttribute("m_email"); %>
-							<%-- ${m_email }<br> --%>
-							<c:set var="name"       value="${m_email}" />
-							<c:set var="totalLength" value="${fn:length(name) }" />
-							<c:set var="first"      value="${fn:substring(name, 0, 2) }" />
-							<c:set var="last"      value="${fn:substring(name, 4, totalLength-7) }" />
-							<c:if test="${!empty  name}"><c:out value="${first}**${last}***.com"/></c:if>						
 							<hr>
 				        </div>
 				    </div>

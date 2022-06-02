@@ -35,15 +35,19 @@ public class IdFind extends HttpServlet {
 		
 		JoinDTO dto = new JoinDTO(m_name, m_tel);
 		JoinDAO dao = new JoinDAO();
+		
 		String m_email = dao.idFind(dto);
-		if(request.getParameter("m_name") != null) {
+		/* System.out.println(m_email); */
+		if(m_email == null) {
+			response.sendRedirect("./idFindFail.jsp");
 			
+		}else {
 			
+			RequestDispatcher rd = request.getRequestDispatcher("./idFind.jsp");
+			request.setAttribute("m_email", dao.idFind(dto));
+			rd.forward(request, response);
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("./idFind.jsp");
-		request.setAttribute("m_email", m_email);
-		rd.forward(request, response);
 		
 		
 	}
