@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -100,9 +101,16 @@ p {
 			        	    </div>
 			    	        <button type="submit" class="btn btn-primary" onClick="id_Search()">계정 찾기</button> <a href="/main.jsp" class="btn btn-default">취소</a>
 			    	        <br>
-			    	        <div id="checkResult">이 자리는 변경 자리</div><br>
+			    	        <br>
+			    	        <!-- <div id="checkResult">이 자리는 변경 자리</div><br> -->
 							<% String m_email = (String)request.getAttribute("m_email"); %>
-							${m_email }
+							<%-- ${m_email }<br> --%>
+							<c:set var="name"       value="${m_email}" />
+							<c:set var="totalLength" value="${fn:length(name) }" />
+							<c:set var="first"      value="${fn:substring(name, 0, 2) }" />
+							<c:set var="last"      value="${fn:substring(name, 4, totalLength-7) }" />
+							<c:if test="${!empty  name}"><c:out value="${first}**${last}***.com"/></c:if>							
+							<hr>
 				        </div>
 				    </div>
 				</div>
