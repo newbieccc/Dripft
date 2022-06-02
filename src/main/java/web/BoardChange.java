@@ -25,7 +25,7 @@ public class BoardChange extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if (Integer.parseInt(request.getParameter("del")) == 1) //detail에서 들어오는 del파라미터값이 1이라면 삭제 수행(doPost로 이동할 것)
+		if (Integer.parseInt(request.getParameter("del")) == 1) //detail에서 들어오는 del파라미터값이 1이라면 삭제 수행(doDel로 이동할 것)
 			doDel(request, response);
 		else {
 			int b_no = Integer.parseInt(request.getParameter("b_no"));

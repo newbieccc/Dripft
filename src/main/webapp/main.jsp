@@ -35,7 +35,7 @@
 		<span class="badge bg-info text-dark" onclick="">인기게시글</span>
 		<span class="badge bg-warning text-dark" onclick="">일반게시글</span>
 		<span class="badge bg-dark" onclick="">공지사항</span>
-		<div class="panel panel-info">
+		<div class="panel">
 			<table class="table table-primary table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
@@ -89,7 +89,7 @@
 		</div>
 		<div class="panel">
 			<table class="table table-dark table-hover"
-				style="font-size: 12px; text-align: center; vertical-align: middle;">
+				style="font-size: 12px; text-align: center; vertical-align: middle; color: white;">
 				<tbody>
 					<tr>
 						<th width="10%">글번호</th>

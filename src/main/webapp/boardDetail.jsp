@@ -45,32 +45,69 @@
 	function doDislike() {
 		location.href = "./boardLike?b_no=${list.b_no}&action=dislike";
 	}
+	
+	function doBoardChange(){
+		
+		location.href = "./boardChange?b_no=${list.b_no}&del=0";
+	}
+	
+	function doBoardDelete() {
+		
+		var result = confirm('글을 삭제하시겠습니까?');
+		
+		if(result){
+			location.href = "./boardChange?b_no=${list.b_no}&del=1";			
+		}
+		
+	}
 </script>
 </head>
 <body>
 	<%@include file="./nav_main.jsp"%>
 	<div class="container">
-		 제목 : ${list.b_title}<small style="color: green"> [${list.totalcomments}]</small><br>
-		 작성자 : ${list.m_nickname}<br>
-		 <small>번호 : ${list.b_no}</small><br>
-		 조회수 ${list.b_viewcount}<br>
-		 작성일 ${list.b_date}<br>
-		<c:if test="${writerCheck ==  1 }">
-			<a href="./boardChange?b_no=${list.b_no}&del=0">글수정</a>
-			<a href="./boardChange?b_no=${list.b_no}&del=1">글삭제</a>
-		</c:if><br>
-	
-		<img src="./img/like.png" height="30px" onclick="doLike()">
-		<c:choose>
-			<c:when test="${sessionScope.m_email ne null}">
-				<img src="./img/dislike.png" height="30px" onclick="doDislike()">
-			</c:when>
-			<c:otherwise>
-				<img src="./img/dislike.png" height="30px" onclick="needLogin()">
-			</c:otherwise>
-		</c:choose>
-		<small style="color: blue">${list.b_like }</small> / <small style="color : red">${list.b_dislike }</small><br>
+		<div class="row g-2">
+			<div class="col-6">
+				<div class="p-3 border bg-light">
+					제목 : ${list.b_title}<small style="color: green">
+						[${list.totalcomments}]</small>
+					<c:if test="${writerCheck ==  1 }">
+						<button type="button" class="btn btn-outline-primary" onclick="doBoardChange()">글수정</button>
+						<button type="button" class="btn btn-outline-danger" onclick="doBoardDelete()">글삭제</button>
+					</c:if>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="p-3 border bg-light">작성자 : ${list.m_nickname}</div>
+			</div>
+			<div class="col-6">
+				<div class="p-3 border bg-light">
+					<small>조회수 ${list.b_viewcount}</small>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="p-3 border bg-light">
+					작성일 : ${list.b_date} <small>번호 : ${list.b_no}</small>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="p-3 border bg-light">
+					<small style="color: blue">${list.b_like }</small> / <small
+						style="color: red">${list.b_dislike }</small> <img
+						src="./img/like.png" height="30px" onclick="doLike()">
+					<c:choose>
+						<c:when test="${sessionScope.m_email ne null}">
+							<img src="./img/dislike.png" height="30px" onclick="doDislike()">
+						</c:when>
+						<c:otherwise>
+							<img src="./img/dislike.png" height="30px" onclick="needLogin()">
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+		</div>
+		<div class="border border-info">
 		${list.b_content}
+		</div>
 
 		<form action="./commentWrite" method="post">
 			<hr color="gray">
@@ -82,13 +119,14 @@
 					type="submit">댓글쓰기</button>
 			</div>
 		</form>
-		<table class= "table">
+		<table class="table">
 			<c:forEach items="${commentList}" var="i">
 				<tr>
-					<td><img src = "./img/user_smile.png" height="30px">${i.m_nickname }</td>
+					<td><img src="./img/user_smile.png" height="30px">${i.m_nickname }</td>
 					<td>${i.c_content }</td>
 					<td>${i.c_date }</td>
-					<td><small style="color: blue">${i.c_like }</small> / <small style="color : red">${i.c_dislike }</small></td>
+					<td><small style="color: blue">${i.c_like }</small> / <small
+						style="color: red">${i.c_dislike }</small></td>
 				</tr>
 			</c:forEach>
 		</table>
