@@ -77,6 +77,7 @@ public class BoardChange extends HttpServlet {
 				
 				if(dao.BoardDelete(b_no) == 1) { //정상적으로 업데이트가 완료 되었을 경우
 					
+					response.sendRedirect("./boardlist");
 				}else { //업데이트 실패했을경우
 					
 				}
@@ -84,7 +85,7 @@ public class BoardChange extends HttpServlet {
 			}else { //세션과 작성자가 일치 안할경우
 				
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
