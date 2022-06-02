@@ -9,6 +9,7 @@ public class NoticeViewDTO {
 	private int n_viewcount;
 	private int n_del;
 	private String m_nickname;
+	private int totalcount;
 	
 	public int getN_no() {
 		return n_no;
@@ -51,6 +52,12 @@ public class NoticeViewDTO {
 	}
 	public void setM_nickname(String m_nickname) {
 		this.m_nickname = m_nickname;
+	}
+	public int getTotalcount() {
+		return totalcount;
+	}
+	public void setTotalcount(int totalcount) {
+		this.totalcount = totalcount;
 	}
 	
 	
