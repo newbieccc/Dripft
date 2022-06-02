@@ -158,7 +158,7 @@
 		
 		<div id="joinbox">
 			
-			<h1><img alt="" src="./img/logo.png" width = 80px;>가입하기</h1>
+			<h1><img alt="" src="./img/logo.png" width = 80px;>회원가입</h1>
 			
 			<hr>
 			<form name="joinform" action="./join" method="post"	onsubmit="return check()">

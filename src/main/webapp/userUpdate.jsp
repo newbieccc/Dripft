@@ -19,17 +19,45 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+<style>
+
+#userinfobox {
+	margin: 0 auto;
+	margin-top: 80px;
+	width: 430px;
+	min-height: 300px;
+	background-color: #F0FFF0;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	border-radius: 15px;
+}
+
+
+#userinfo button {
+	width: 150px;
+	border: 0px;
+	font-size: large;
+	font-weight: bold;
+	height: 40px;
+}
+</style>
 </head>
 <script type="text/javascript">
 
+
+
 function nickCheck() {
 	var nickname = $("#m_nickname").val();//
-	if(nickname == "" || nickname.length < 4){
+	  if(nickname == "" || nickname.length < 4){
 		$("#checkResult1").css("color", "red");
 		$("#checkResult1").text("4글자 이상이어야 합니다.");
-	}else{
+	}else{  
 		//$("#checkResult").css("color", "blue");
-		//$("#checkResult").text(id + "라고 입력했습니다.");
+		//$("#checkResult").text(id + "라고 입력했습니다."); 
 	$.ajax({
 		url : "./nickCheck",
 		type : "GET",
@@ -52,6 +80,7 @@ function nickCheck() {
 		}
 	});
 }
+}
 
 function checkpw() {
 	var password = document.getElementById('m_password').value;
@@ -72,26 +101,27 @@ function checkpw() {
 <body>
 	<%@include file="./nav_main.jsp" %>	
 	<form action="./userUpdate" method="POST"> <!-- 포스트로 변경된 값을 보냄 -->
- 	  서버에서 오는 값 : ${userInfo } <br>
-      이메일 : ${userInfo.m_email } <br>
-      비밀번호 : ${userInfo.m_password } <br>
-      <input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" class="form-control" onchange="checkpw()"> <br> 
+ 	  <%-- 서버에서 오는 값 : ${userInfo } <br> --%>
+ 	  <div id= userinfobox>
+      이메일 : ${userInfo.m_email } <br><br>
+      <%-- 비밀번호 : ${userInfo.m_password } <br> --%>
+      <input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" class="form-control"> <br> 
 	  <input type="password" name="m_password2" id="m_password2" placeholder="비밀번호를 다시한번 입력하세요" class="form-control" onchange="checkpw()"> <br>
       이름: ${userInfo.m_name } <br>
       <input type="text" name="m_name" placeholder="변경할 이름을 입력하세요" class="form-control"> <br>
       닉네임: ${userInfo.m_nickname } <br>
-      <input type="text" name="m_nickname" id="m_nickname" placeholder="변경할 닉네임을 입력하세요" class="form-control" onchange="nickCheck()"> <br>
-	  <div id="checkResult1">닉네임을 확인중입니다.</div>
+      <input type="text" name="m_nickname" id="m_nickname" placeholder="변경할 닉네임을 입력하세요" class="form-control" onchange="nickCheck()">
+	  <div id="checkResult1">닉네임을 확인중입니다.</div><br>
       생일 : ${userInfo.m_birth } <br>
       <input type="date" name="m_birth" placeholder="변경할 생일을 입력하세요" class="form-control"> <br>
-      성별 : ${userInfo.m_gender } <br>
+      성별 : ${userInfo.m_gender } <br><br>
       핸드폰번호 : ${userInfo.m_tel } <br>
       <input type="tel" name="m_tel" placeholder="변경할 전화번호를 입력하세요"	class="form-control"> <br>
       등급 : ${userInfo.m_authority } <br>
-      가입일 : ${userInfo.m_joindate }<br>
+      가입일 : ${userInfo.m_joindate }<br><br>
       
-       <button type="submit">수정완료</button>
-       
+       <button type="submit" id="joinBtn" class="btn btn-light">수정완료</button>
+       </div>
 	</form>
 </body>
 </html>

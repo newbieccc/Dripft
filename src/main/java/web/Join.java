@@ -61,7 +61,7 @@ public class Join extends HttpServlet {
 			pw.println("</head>");
 			pw.println("<body>");
 			pw.println("<h1>가입에 성공하였습니다.</h1>");
-			pw.println("<a href='./index'>로그인하러가기</a>");
+			pw.println("<a href='./login.jsp'>로그인하러가기</a>");
 			pw.println("</body>");
 			pw.println("</html>");
 			
