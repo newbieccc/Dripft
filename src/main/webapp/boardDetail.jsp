@@ -71,10 +71,13 @@
 				type:'post',
 				url : './report',
 				dataType : 'text',
-				data : "reason=" + reason,
+				data : {"reason" : reason, "b_no" : ${list.b_no}},
 				success : function(reason){
-        			alert(reason);
-        		} 
+        			alert(reason + "성공");
+        		},
+				error: function(reason){
+					alert(reason + "실패");
+				}
 			});
 		}
 	}
