@@ -65,21 +65,22 @@
 		var result = confirm('글을 신고하시겠습니까?');
 		if(result){
 			
-			var reason = prompt("신고사유를 입력해주세요");
-
+			var reason = prompt('신고사유를 입력해주세요', '');
+			var b_no = '${list.b_no}';
+			var m_email = '${sessionScope.m_email}';
+			console.log(b_no);
+			console.log(m_email);
+			console.log(reason);
+			
 			$.ajax({
-				type:'post',
+				type : 'POST',
 				url : './report',
-				dataType : 'text',
-				data : {"reason" : reason, "b_no" : ${list.b_no}},
-				success : function(reason){
-        			alert(reason + "성공");
-        		},
-				error: function(reason){
-					alert(reason + "실패");
+				dataType : 'html',
+				data : {"m_email" : m_email, "b_no": b_no, "reason" : reason},
+				success : function(){
+					alert(reason);
 				}
 			});
-		}
 	}
 </script>
 </head>
