@@ -23,6 +23,39 @@
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
 <script type="text/javascript">
+function checkpw() {
+	var password = document.getElementById('m_password').value;
+	var pw2 = document.getElementById('pw2').value;
+	if(password != pw2) {
+		alert("비밀번호가 일치하지 않습니다");
+		return false;
+	} else {
+		/* alert("비밀번호가 일치합니다"); */
+		return true;
+	}
+}
+function emailCheck() {
+	var m_email = $("#m_email").val();
+	
+	$.ajax({
+		url : "./emailCheck",
+		type : "POST",
+		dataType : "html",
+		data : {"m_email" : m_email},
+		success : function(result) {
+			if (result == 0) {
+				alert("해당 등록 된 계정이 없습니다.");
+				alert("계정 찾기 페이지로 이동합니다.");
+				location.href = './idFind.jsp';
+			} else {
+				alert("변경되었습니다.");
+			}
+		},
+		error : function() {
+			alert("서버가 동작하지 않습니다.");
+		}
+	});
+}
 </script>
 <style type="text/css">
 .content {
@@ -79,18 +112,19 @@ p {
 			            <p class="lead">회원정보를 입력해주세요.</p>
 			            	<p>회원 가입시 입력하신 이메일과 이름, 전화번호를 입력하신 후,<br> 하단에 비밀번호 설정을 하실 수 있습니다.</p>
 			            		<div class="form-group">
-			            	    <input type="text" name="m_email" class="form-control form-control-inline text-center" placeholder="이메일" value="">
-			            	    <input type="text" name="m_name" class="form-control form-control-inline text-center" placeholder="이름" value="">
-			            	    <input type="text" name="m_tel" class="form-control form-control-inline text-center" placeholder="전화번호" value="">
-			            	    <input type="text" name="m_password"" class="form-control form-control-inline text-center" placeholder="비밀번호" value="">
-			            	    <input type="text" name="pw2" class="form-control form-control-inline text-center" placeholder="비밀번호 확인" value="">
+			            	    <input type="email" id="m_email" name="m_email" class="form-control form-control-inline text-center" placeholder="이메일" value="" required="required">
+			            	    <input type="text" name="m_name" class="form-control form-control-inline text-center" placeholder="이름" value="" required="required">
+			            	    <input type="text" name="m_tel" class="form-control form-control-inline text-center" placeholder="전화번호" value="" required="required">
+			            	    <input type="password" id="m_password" name="m_password" class="form-control form-control-inline text-center" placeholder="비밀번호" value="" required="required">
+			            	    <input type="password" id="pw2" name="pw2" class="form-control form-control-inline text-center" placeholder="비밀번호 확인" value="" required="required" onchange="checkpw()">
 			        	    </div>
-			    	        <button type="submit" class="btn btn-primary">재설정</button> <a href="/main.jsp" class="btn btn-default">취소</a>
+			    	        <button type="submit" class="btn btn-primary" onclick="return emailCheck()">재설정</button> <a href="/main" class="btn btn-default">메인으로</a>
+			    	        <hr>
 				        </div>
 				    </div>
 				</div>
 			</form>
 		</div>
-		<hr>	
+	<hr>	
 </body>
 </html>
