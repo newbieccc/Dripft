@@ -9,6 +9,7 @@ import java.util.List;
 
 import db.DBConnection;
 import dto.*;
+import web.BoardList;
 
 public class BoardDAO {
 	public List<BoardViewDTO> boardList(int b_no) {
@@ -313,6 +314,43 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	public List<BoardViewDTO> boardsearch (String searchField, String content){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardViewDTO> list = new ArrayList<>();
 	
+		String sql = null;
+		if(searchField.equals("b_title")) {
+			sql = "SELECT * FROM boardView WHERE b_title Like ?";
+		}else if(searchField.equals("m_nickname")) {
+			sql = "SELECT * FROM boardView WHERE m_nickname Like ?";
+		}
+		try { 
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%"+content+"%");
+			rs=pstmt.executeQuery();
+			while (rs.next()) {
+				BoardViewDTO dto = new BoardViewDTO();
+				dto.setB_no(rs.getInt("b_no"));
+				dto.setB_title(rs.getString("b_title"));
+				dto.setB_date(rs.getString("b_date"));
+				dto.setB_like(rs.getInt("b_like"));
+				dto.setB_viewcount(rs.getInt("b_viewcount"));
+				dto.setB_content(rs.getString("b_content"));
+				dto.setB_dislike(rs.getInt("b_dislike"));
+				dto.setM_nickname(rs.getString("m_nickname"));
+				dto.setTotalcount(rs.getInt("totalcount"));
+				dto.setTotalcomments(rs.getInt("totalcomments"));
+				
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }

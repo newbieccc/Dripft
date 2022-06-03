@@ -13,18 +13,20 @@ public class LoginDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT count(*) as count, m_nickname FROM accounts WHERE m_email=? AND m_password=? ";
+		String sql = "SELECT count(*) as count, m_nickname, m_del FROM accounts WHERE m_email=? AND m_password=? ";
 
 		try {
 			con = DBConnection.dbconn();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, dto.getM_email());
 			pstmt.setString(2, dto.getM_password());
+			
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				dto.setM_nickname(rs.getString("m_nickname"));
 				dto.setCount(rs.getInt("count"));
+				dto.setM_del(rs.getInt("m_del"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

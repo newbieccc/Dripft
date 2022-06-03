@@ -12,7 +12,6 @@ table {
 	text-align: center;
 }
 td {
-	
 }
 </style>
 <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
@@ -54,8 +53,8 @@ td {
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="./boardWrite?write=0"><button style="width: 15%; margin-left: 40%;">글쓰기</button></a>
-	
+	<a href="./boardWrite?write=0"><button style="width: 10%; margin-left: 83%;">글쓰기</button></a>
+	<div style="text-align: center;">
 	<hr>
 	<%-- pageNo = ${pageNo } <br> totalcount = ${totalcount }<br> --%>
 	<!-- totalpage = --> <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
@@ -80,7 +79,6 @@ td {
 	<%-- endpage : ${endpage } --%>
 	<hr>
 	
-	<button onclick="location.href='./boardlist?pageNo=1'">앞으로</button>
 	<c:choose>
 		<c:when test="${pageNo ne 1 }">
 			<button onclick="location.href='./boardlist?pageNo=${pageNo - 1}'">1칸 왼쪽으로</button>
@@ -102,7 +100,25 @@ td {
 			<button disabled="disabled" onclick="location.href='./boardlist?pageNo=${pageNo + 1}'">1칸 오른쪽으로</button>
 		</c:otherwise>
 	</c:choose>
-	<button onclick="location.href='./boardlist?pageNo=${totalpage }'">뒤로</button>
-
+</div>
+<div style="margin-left: 780px; padding-top: 10px;">
+<div class="container">
+		<div class="row">
+			<form method="post" name="search" action="./boardSearch">
+				<table class="pull-right">
+					<tr>
+						<td><select class="form-control" name="searchField">
+								<option style="text-align: center;" value="b_title" selected="selected">제목</option>
+								<option style="text-align: center;" value="m_nickname">작성자</option>
+						</select></td>
+						<td><input type="text" class="form-control"
+							placeholder="검색어 입력" name="content" maxlength="100"></td>
+						<td><button type="submit" class="btn btn-success">검색</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
 </body>
 </html>

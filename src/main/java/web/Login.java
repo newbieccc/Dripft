@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 			LoginDAO dao = new LoginDAO();
 			dto = dao.login(dto);
 			
-			if (dto.getCount() == 1) {
+			if (dto.getCount() == 1 && dto.getM_del() == 0)  {
 
 				HttpSession session = request.getSession();
 				session.setAttribute("m_nickname", dto.getM_nickname());
@@ -77,9 +77,11 @@ public class Login extends HttpServlet {
 					response.addCookie(cookie);
 				}
 				response.sendRedirect("./main");
-			} else {
-				response.sendRedirect("./login.jsp?error=1024");
-			}
+			} else if( dto.getM_del() == 1 && dto.getCount() == 1) {
+				response.sendRedirect("./login.jsp?error=deleted");
+			}else {
+				response.sendRedirect("./login.jsp?error=notexist");
+			} 
 
 		} else {
 			response.sendRedirect("./login.jsp");

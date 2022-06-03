@@ -170,6 +170,7 @@ body {
                     <span class="inline-saperator">/</span>
                     <a href="./pwFind.jsp">비밀번호 재설정</a>
                     
+                    
                 </div>
             </form>
         </div>
@@ -199,17 +200,25 @@ body {
 			</div>
 		</div>
 	</div>  --%>
-		
-		<%
-		String error = request.getParameter("error");
-		if (error != null) {
-		%>
-		<script type="text/javascript">
-			alert("아이디와 비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
-		</script>
-		<%
-		}
-		%>
+
+	<%
+	String error = request.getParameter("error");
+	if (error != null) {
+		if (error.equals("deleted")) {
+	%>
+	<script type="text/javascript">
+		alert("이미 탈퇴된 회원입니다.");
+	</script>
+	<%
+	} else if (error.equals("notexist")) {
+	%>
+	<script type="text/javascript">
+		alert("회원정보가 일치하지않습니다.");
+	</script>
+	<%
+	}
+	}
+	%>
 </body>
 </html>
 
