@@ -112,17 +112,7 @@
 			</table>
 		</div>
 	</div>
-	<div style="text-align: center;">
-	<footer class="container-fluid navbar-fixed-bottom">
-	<div class="container">
-		<div class="col-6" style="width: 100%;">
-			<div class="p-3 border bg-light">
-				<img src="./img/logo.png" style="opacity: 0.5; width: 200px" >
-				<small>since 2022.03.15</small>
-			</div>
-		</div>
-	</div>
-</footer>
-</div>
+	<hr>
+	<%@include file="./footer.jsp" %>
 </body>
 </html>

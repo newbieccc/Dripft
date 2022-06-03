@@ -132,14 +132,12 @@ button {
 		</c:forEach>
 	</table>
 	</div>
-	<hr>
 	<%-- pageNo = ${pageNo } <br> totalcount = ${totalcount }<br> --%>
 	<!-- totalpage = --> <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
 			<c:if test="${(totalcount % 10) > 0 }">
 				<c:set var="totalpage" value="${totalpage + 1}" />
 			</c:if>
 	<%-- 변환된 : ${totalpage } --%> <br>
-	<hr>
 	
 	
 	<!-- 페이지 시작,끝 번호 버튼 선언 -->
@@ -206,17 +204,7 @@ button {
 			</li>
 		</ul>
 	</div>
-	<div style="text-align: center;">
-	<footer class="container-fluid navbar-fixed-bottom">
-	<div class="container">
-		<div class="col-6" style="width: 100%;">
-			<div class="p-3 border bg-light">
-				<img src="./img/logo.png" style="opacity: 0.5; width: 200px" >
-				<small>since 2022.03.15</small>
-			</div>
-		</div>
-	</div>
-</footer>
-</div>
+	<hr>
+<%@include file="./footer.jsp" %>
 </body>
 </html>
