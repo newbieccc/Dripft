@@ -106,7 +106,8 @@ button {
 <body>
 	<%@include file="./nav_main.jsp" %>
 	<div style="width: 800px; height: 100%; margin: 0 auto;">
-	<table class="table table-warning table-hover"
+	<span class="badge bg-info text-dark" onclick="">인기게시글</span>
+	<table class="table table-primary table-hover"
 				style="font-size: 12px; vertical-align: middle;">
 		<tr>
 			<th>번호</th>

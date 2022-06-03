@@ -103,6 +103,7 @@ button {
 <body>
 	<%@include file="./nav_main.jsp" %>	
 	<div style="width: 800px; height: 100%; margin: 0 auto;">
+	<span class="badge bg-dark" onclick="">공지사항</span>
 	<table class="table table-dark table-hover" 
 				style="font-size: 12px; vertical-align: middle; color: white;">
 		<tr>
