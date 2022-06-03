@@ -103,8 +103,9 @@ button {
 </head>
 <body>
 	<%@include file="./nav_main.jsp" %>	
-	<table id="list" style="width: 100%;" class="table table-primary table-hover"
-				style="font-size: 12px; text-align: center; vertical-align: middle;">
+	<div style="width: 800px; height: 100%; margin: 0 auto;">
+	<table class="table table-primary table-hover"
+				style="font-size: 12px; vertical-align: middle;">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -128,6 +129,7 @@ button {
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<a href="./boardWrite?write=0"><button style="width: 10%; margin-left: 83%;">글쓰기</button></a>
 	<div style="text-align: center;">
 	<hr>

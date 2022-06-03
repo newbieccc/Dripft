@@ -105,7 +105,9 @@ button {
 </head>
 <body>
 	<%@include file="./nav_main.jsp" %>	
-	<table>
+	<div style="width: 800px; height: 100%; margin: 0 auto;">
+	<table class="table table-warning table-hover"
+				style="font-size: 12px; vertical-align: middle;">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -129,6 +131,7 @@ button {
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<hr>
 	<%-- pageNo = ${pageNo } <br> totalcount = ${totalcount }<br> --%>
 	<!-- totalpage = --> <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
@@ -137,6 +140,7 @@ button {
 			</c:if>
 	<%-- 변환된 : ${totalpage } --%> <br>
 	<hr>
+	
 	
 	<!-- 페이지 시작,끝 번호 버튼 선언 -->
 	<c:if test="${pageNo % 10 ne 0 }">
@@ -152,7 +156,7 @@ button {
 		<c:set var="endpage" value="${totalpage }" />
 	</c:if>
 	<%-- endpage : ${endpage } --%>
-	<hr>
+	
 	
 	<div class="text-center">
 		<ul class="pagination pagination-sm">
