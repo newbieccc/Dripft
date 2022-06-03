@@ -159,7 +159,7 @@ a:-webkit-any-link {
 		                <li><strong>게시물 삭제가 필요한 경우에는 관리자에게 문의해 주시기 바랍니다.</strong></li>
 		            </ul>
 					<a href="./userInfo" class="btn btn-default">아니오</a>
-					<button type="submit" id="delBtn" class="btn btn-danger">예, 탈퇴하겠습니다.</button>
+					<button type="submit" id="delBtn" class="btn btn-danger" onclick="alert('탈퇴하였습니다.');">예, 탈퇴하겠습니다.</button>
 				</form>
         	</div>
     	</div>
