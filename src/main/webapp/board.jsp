@@ -130,16 +130,13 @@ button {
 		</c:forEach>
 	</table>
 	</div>
-	<a href="./boardWrite?write=0"><button style="width: 10%; margin-left: 83%;">글쓰기</button></a>
-	<div style="text-align: center;">
-	<hr>
+	<a href="./boardWrite?write=0"><button style="width: 10%; margin-left: 45%;">글쓰기</button></a> <br>
 	<%-- pageNo = ${pageNo } <br> totalcount = ${totalcount }<br> --%>
 	<!-- totalpage = --> <fmt:parseNumber integerOnly="true" var="totalpage"	value="${totalcount / 10 }" />
 			<c:if test="${(totalcount % 10) > 0 }">
 				<c:set var="totalpage" value="${totalpage + 1}" />
 			</c:if>
 	<%-- 변환된 : ${totalpage } <br> --%>
-	<hr>
 	<!-- 페이지 시작,끝 번호 버튼 선언 -->
 	<c:if test="${pageNo % 10 ne 0 }">
 		<fmt:parseNumber integerOnly="true" var="startpage" value="${pageNo / 10 }"/>
@@ -154,7 +151,6 @@ button {
 		<c:set var="endpage" value="${totalpage }" />
 	</c:if>
 	<%-- endpage : ${endpage } --%>
-	<hr>
 
 	<div class="text-center">
 		<ul class="pagination pagination-sm">
@@ -204,5 +200,17 @@ button {
 			</li>
 		</ul>
 	</div>
+	<footer class="container-fluid navbar-fixed-bottom">
+	<div class="container">
+		<hr>
+		<div class="col-6" style="width: 100%;">
+			<div class="p-3 border bg-light">
+				<img src="./img/logo.png" style="opacity: 0.5; width: 200px" >
+				<small>since 2022.03.15</small>
+			</div>
+		</div>
+	</div>
+</footer>
+	
 </body>
 </html>
