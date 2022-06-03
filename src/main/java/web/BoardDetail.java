@@ -53,7 +53,7 @@ public class BoardDetail extends HttpServlet {
 		// String error = request.get
 		try {
 			BoardViewDTO dto = boarddao.boardDetail(b_no);
-			List<CommentViewDTO> commentList = commentdao.commentsList(b_no);
+			List<CommentViewDTO> commentList = commentdao.commentsList(b_no, s_email);
 			
 			if(boarddao.BoardWriterCheck(s_email, b_no) == 1) request.setAttribute("writerCheck", 1);
 			request.setAttribute("list", dto);

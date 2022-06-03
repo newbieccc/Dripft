@@ -89,6 +89,57 @@
 			}
 		});
 	});
+
+	function Cchange(c_no, c_content){
+		var result2 = confirm('댓글을 수정하시겠습니까?');
+		if(result2){
+			var c_no = c_no;
+			var content = prompt('변경 내용을 입력해주세요', c_content);
+			
+			if(content != null && content != ""){
+				$.ajax({
+				type : 'POST',
+				url : './commentChange',
+				dataType : 'html',
+				data : {"c_no" : c_no,"c_content" : content, "action" : 'commentChange'},
+				success : function(result){
+					if(result == 1){
+						alert('댓글수정이 완료되었습니다');
+						location.reload();
+					}else{
+						alert('댓글수정 권한이 없습니다.');
+						location.reload();
+					}
+				}
+			});
+			}else{
+				alert('공백은 입력할 수 없습니다.');
+			}
+		}
+	}
+
+	function CDelete(c_no){
+		var result2 = confirm('댓글을 삭제하시겠습니까?');
+		if(result2){
+			var c_no = c_no;
+			
+			$.ajax({
+				type : 'POST',
+				url : './commentChange',
+				dataType : 'html',
+				data : {"c_no" : c_no, "action" : 'commentDelete'},
+				success : function(result){
+					if(result == 1){
+						alert('댓글수정이 완료되었습니다');
+						location.reload();
+					}else{
+						alert('댓글수정 권한이 없습니다.');
+						location.reload();
+					}
+				}
+			});
+		}
+	}
 </script>
 </head>
 <body>
@@ -153,18 +204,24 @@
 			<c:forEach items="${commentList}" var="i">
 				<tr>
 					<td><img src="./img/user_smile.png" height="30px">${i.m_nickname }</td>
-					<td>${i.c_content }</td>
-					<td>${i.c_date }</td>
-					<td style="width: 15%;"><small style="color: blue">${i.c_like }</small> / <small style="color: red">${i.c_dislike }</small>
-						<img src="./img/like.png" height="25px" onclick="cdoLike(${i.c_no})">
+					<td style="width:50%;">${i.c_content }</td>
+					<td>
+						<small>${i.c_date }</small>
+					</td>
+					<td style="width: 20%;"><small style="color: blue">${i.c_like }</small> / <small style="color: red">${i.c_dislike }</small>
+						<img src="./img/like.png" height="20px" onclick="cdoLike(${i.c_no})">
 						<c:choose>
 							<c:when test="${sessionScope.m_email ne null}">
-								<img src="./img/dislike.png" height="25px" onclick="cdoDislike(${i.c_no})">
+								<img src="./img/dislike.png" height="20px" onclick="cdoDislike(${i.c_no})">
 							</c:when>
 							<c:otherwise>
-								<img src="./img/dislike.png" height="25px" onclick="needLogin()">
+								<img src="./img/dislike.png" height="20px" onclick="needLogin()">
 							</c:otherwise>
 						</c:choose>
+						<c:if test="${i.writerCheck == 1 }">
+							<button type="button" class="btn btn-primary btn-sm Cchange" onclick="Cchange(${i.c_no}, '${i.c_content}')">수정</button>
+							<button type="button" class="btn btn-danger btn-sm CDelete" onclick="CDelete(${i.c_no})">삭제</button>
+						</c:if>
 					</td>
 				</tr>
 			</c:forEach>
