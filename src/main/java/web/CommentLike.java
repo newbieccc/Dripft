@@ -74,6 +74,26 @@ public class CommentLike extends HttpServlet {
 		int c_no = Integer.parseInt(request.getParameter("c_no"));
 		String s_email = (String) request.getSession().getAttribute("m_email");
 		PrintWriter pw = response.getWriter();
-		
+		try {
+
+			if (dao.CommentDislike(c_no, s_email) == 1) {
+
+				dao.CommentDislikeUp(c_no);
+				pw.println("<script>");
+				pw.println("location.href = document.referrer");
+				pw.println("</script>");
+
+			} else {
+
+				pw.println("<script>");
+				pw.println("alert('이미 비추천한 댓글입니다.')");
+				pw.println("history.back()");
+				pw.println("</script>");
+
+			}
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 	}
 }
