@@ -1,6 +1,7 @@
 package web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,14 +32,17 @@ public class BoardSearch extends HttpServlet {
 		String searchField = request.getParameter("searchField");//검색유형
 		String content = request.getParameter("content");
 		
-		int result = 0;
 		
 		BoardDAO dao = new BoardDAO();
 		List<BoardViewDTO> list = dao.boardsearch(searchField, content);
-		request.setAttribute("list", list);
-		RequestDispatcher rd = request.getRequestDispatcher("./boardsearch.jsp");
-		rd.forward(request, response);
-		
+		if(list==null) {
+			PrintWriter pw = response.getWriter();
+			pw.println("<script>alert('검색 결과가 없습니다.'); window.location.href = document.referrer; </script>");
+		} else {
+			request.setAttribute("list", list);
+			RequestDispatcher rd = request.getRequestDispatcher("./boardsearch.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }

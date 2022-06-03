@@ -347,6 +347,9 @@ public class BoardDAO {
 				
 				list.add(dto);
 			}
+			if(list.size()==0) {
+				return null;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
