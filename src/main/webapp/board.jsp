@@ -120,7 +120,8 @@ button {
 		<c:forEach items="${list }" var="i">
 			<tr>
 				<td>${i.b_no }</td>
-				<td><a href="./boardDetail?b_no=${i.b_no }">${i.b_title }</a></td>
+				<td><a href="./boardDetail?b_no=${i.b_no }">${i.b_title }</a><small
+								style="color: green">[${i.totalcomments}]</small></td>
 				<td>${i.b_date }</td>
 				<td>${i.b_like }</td>
 				<td>${i.b_dislike }</td>
