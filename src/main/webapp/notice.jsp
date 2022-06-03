@@ -196,9 +196,9 @@ button {
 				<button onclick="location.href='./noticeList?pageNo=${totalpage }'" style="float: left;">&gt;&gt;</button>
 			</li>
 		</ul>
-			<footer class="container-fluid navbar-fixed-bottom">
+	<div style="text-align: center;">
+	<footer class="container-fluid navbar-fixed-bottom">
 	<div class="container">
-		<hr>
 		<div class="col-6" style="width: 100%;">
 			<div class="p-3 border bg-light">
 				<img src="./img/logo.png" style="opacity: 0.5; width: 200px" >
@@ -207,5 +207,6 @@ button {
 		</div>
 	</div>
 </footer>
+</div>
 </body>
 </html>
