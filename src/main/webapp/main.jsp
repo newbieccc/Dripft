@@ -22,6 +22,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+<!-- 글꼴 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -101,7 +102,7 @@
 					<c:forEach items="${notice}" var="i">
 						<tr>
 							<td>${i.n_no}</td>
-							<td><a href="./boardDetail?b_no=${i.n_no}">${i.n_title}</a></td>
+							<td><a href="./noticeDetail?n_no=${i.n_no}">${i.n_title}</a></td>
 							<td>${i.m_nickname}</td>
 							<td>${i.n_date}</td>
 							<td>${i.n_viewcount}</td>
