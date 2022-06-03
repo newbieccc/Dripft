@@ -86,7 +86,8 @@ public class JoinDAO {
 	public void accountDel(JoinDTO dto) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM account WHERE m_email=?;";
+		String sql = "UPDATE accounts SET m_del=1 WHERE m_email=?";
+		/* String sql = "DELETE FROM account WHERE m_email=?;"; */
 
 		try {
 			con = DBConnection.dbconn();

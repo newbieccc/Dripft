@@ -26,7 +26,6 @@ public class DeleteAccount extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println("1");
 		JoinDTO dto = new JoinDTO();
 		
 		
@@ -37,13 +36,18 @@ public class DeleteAccount extends HttpServlet {
 			JoinDAO dao = new JoinDAO();
 			dao.accountDel(dto);
 			
-			System.out.println("2");
-			
-			//리스폰 아닌가?ㅜ.ㅜ
-			response.sendRedirect("./index.jsp");
+			if(!session.getAttribute("m_email").toString().isEmpty()) {
+				
+				session.removeAttribute("m_email");
+				session.removeAttribute("m_nickname");
+				
+				session.invalidate();
+				
+				response.sendRedirect("./main");
+			}
+		} else {
+			response.sendRedirect("./main");			
 		}
-		System.out.println("3");
-		response.sendRedirect("./index");
 	}
 
 }

@@ -71,7 +71,7 @@
 					$("#joinBtn").attr("disabled", false);
 				} else {
 					$("#checkResult").css("color", "red");
-					$("#checkResult").text(email + "는 이미 등록된 Email입니다.");
+					$("#checkResult").text(email + "는 이미 사용중이거나 탈퇴한 Email입니다.");
 					$("#joinBtn").attr("disabled", true);
 					$("#email").focus();
 				}
