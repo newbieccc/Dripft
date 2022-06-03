@@ -10,6 +10,7 @@ public class CommentViewDTO {
 	private int c_dislike;
 	private int c_del;
 	private String m_nickname;
+	private int writerCheck;
 	
 	public int getC_no() {
 		return c_no;
@@ -59,5 +60,12 @@ public class CommentViewDTO {
 	public void setM_nickname(String m_nickname) {
 		this.m_nickname = m_nickname;
 	}
+	public int getWriterCheck() {
+		return writerCheck;
+	}
+	public void setWriterCheck(int writerCheck) {
+		this.writerCheck = writerCheck;
+	}
+	
 	
 }
