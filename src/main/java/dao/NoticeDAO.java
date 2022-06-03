@@ -95,6 +95,8 @@ public class NoticeDAO {
 				dto.setN_content(rs.getString("n_content"));
 				dto.setN_date(rs.getString("n_date"));
 				dto.setResultcount(rs.getInt("count"));
+				dto.setN_viewcount(rs.getInt("n_viewcount"));
+				dto.setN_no(rs.getInt("n_no"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

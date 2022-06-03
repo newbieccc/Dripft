@@ -32,13 +32,42 @@
 
 <body>
 <%@include file="./nav_main.jsp" %>
-	<div>
-	작성자 : ${dto.m_nickname}<br>
-	제목 : ${dto.n_title}<br>
-	내용 : ${dto.n_content}<br>
-	날짜 : ${dto.n_date}<br>
+	<div class="container">
+		<div class="row g-2">
+			<div class="col-6">
+				<div class="p-3 border bg-light">
+					제목 : ${dto.n_title}
+					<c:if test="${writerCheck ==  1 }">
+						<button type="button" class="btn btn-outline-primary" onclick="doBoardChange()">글수정</button>
+						<button type="button" class="btn btn-outline-danger" onclick="doBoardDelete()">글삭제</button>
+					</c:if>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="p-3 border bg-light">작성자 : ${dto.m_nickname}</div>
+			</div>
+			<div class="col-6">
+				<div class="p-3 border bg-light">
+					<small>조회수 ${dto.n_viewcount}</small>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="p-3 border bg-light">
+					작성일 : ${dto.n_date} <small style="color : gray;">번호 : ${dto.n_no}</small>
+				</div>
+			</div>
+			<div class = "border border-info">
+			${dto.n_content}
+			</div>
+			
+			</div>
+		</div>
+	<%@include file="./footer.jsp"%>
 	
-	</div>
+	
+	
+	
+
 
 </body>
 </html>
