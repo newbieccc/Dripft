@@ -2,7 +2,7 @@ package dto;
 
 public class JoinDTO {
 	private String m_email, m_password, m_name, m_nickname, m_birth, m_gender, m_tel ,m_joindate;
-	private int m_authority, m_no;
+	private int m_authority, m_no, m_del;
 
 	public JoinDTO(){
 		
@@ -96,5 +96,10 @@ public class JoinDTO {
 		this.m_no = m_no;
 	}
 
-	
+	public int getM_del() {
+		return m_del;
+	}
+	public void setM_del(int m_del) {
+		this.m_del = m_del;
+	}	
 }

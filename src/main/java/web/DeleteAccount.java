@@ -37,13 +37,13 @@ public class DeleteAccount extends HttpServlet {
 			JoinDAO dao = new JoinDAO();
 			dao.accountDel(dto);
 			
-			System.out.println("2");
+			System.out.println("2");			
+			response.sendRedirect("./main");
+		} else {
+			System.out.println("3");
+			response.sendRedirect("./main");
 			
-			//리스폰 아닌가?ㅜ.ㅜ
-			response.sendRedirect("./index.jsp");
 		}
-		System.out.println("3");
-		response.sendRedirect("./index");
 	}
 
 }
