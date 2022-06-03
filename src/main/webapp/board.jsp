@@ -11,7 +11,77 @@
 table {
 	text-align: center;
 }
-td {
+td {	
+}.text-center {
+    text-align: center;
+    font-size: 17px;
+}
+* {
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+.pagination {
+    margin: 0 auto;
+}
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+    justify-content: center;
+}
+ul {
+	display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.pagination > li {
+    display: inline;
+}
+.pagination-sm > li:first-child > a, .pagination-sm > li:first-child > span {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span {
+    margin-left: 0;
+}
+.pagination-sm > li > a, .pagination-sm > li > span {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+a:-webkit-any-link, {
+    cursor: pointer;
+}
+button {
+    position: relative;
+    float: left;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.pageNow {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
 }
 </style>
 <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico" />
@@ -83,29 +153,54 @@ td {
 	</c:if>
 	<%-- endpage : ${endpage } --%>
 	<hr>
-	
-	<c:choose>
-		<c:when test="${pageNo ne 1 }">
-			<button onclick="location.href='./boardlist?pageNo=${pageNo - 1}'">1칸 왼쪽으로</button>
-		</c:when>	
-		<c:otherwise>
-			<button disabled="disabled" onclick="location.href='./boardlist?pageNo=${pageNo - 1}'">1칸 왼쪽으로</button>
-		</c:otherwise>
-	</c:choose>
-	
-	<!-- 페이지 href 생성 -->
-	<c:forEach begin="${startpage }" end="${endpage }" var="n">
-		<a href="./boardlist?pageNo=${n }">${n }</a>
-	</c:forEach>
-	<c:choose>
-		<c:when test="${pageNo ne totalpage }">
-			<button onclick="location.href='./boardlist?pageNo=${pageNo + 1}'">1칸 오른쪽으로</button>
-		</c:when>	
-		<c:otherwise>
-			<button disabled="disabled" onclick="location.href='./boardlist?pageNo=${pageNo + 1}'">1칸 오른쪽으로</button>
-		</c:otherwise>
-	</c:choose>
-</div>
 
+	<div class="text-center">
+		<ul class="pagination pagination-sm">
+			<li class="prev">
+				<button onclick="location.href='./boardlist?pageNo=1'" style="float: left;">&lt;&lt;</button>
+				<c:choose>
+					<c:when test="${pageNo ne 1 }">
+						<li>
+						<button onclick="location.href='./boardlist?pageNo=${pageNo - 1}'" style="float: left;">&lt;</button>
+						</li>
+					</c:when>	
+					<c:otherwise>
+						<li>
+						<button disabled="disabled" onclick="location.href='./boardlist?pageNo=${pageNo - 1}'" style="float: left;">&lt;</button>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				
+				<!-- 페이지 href 생성 -->
+				<c:forEach begin="${startpage }" end="${endpage }" var="n">
+					<c:choose>
+						<c:when test="${pageNo eq n}">
+							<li class="pageNow" style="float: left;">
+								<a href="./boardlist?pageNo=${n }" class="pageNow" style="background-color: #337ab7; z-index: 2; color: #fff;">${n }</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li style="float: left;"><a href="./boardlist?pageNo=${n }">${n }</a></li>
+						</c:otherwise>
+					</c:choose>
+
+				</c:forEach>
+				<c:choose>
+					<c:when test="${pageNo ne totalpage }">
+						<li>
+						<button onclick="location.href='./boardlist?pageNo=${pageNo + 1}'" style="float: left;">&gt;</button>
+						</li>
+					</c:when>	
+					<c:otherwise>
+						<li>
+						<button disabled="disabled" onclick="location.href='./boardlist?pageNo=${pageNo + 1}'" style="float: left;">&gt;</button>
+						</li>
+					</c:otherwise>
+				</c:choose>
+				<li>
+				<button onclick="location.href='./boardlist?pageNo=${totalpage }'" style="float: left;">&gt;&gt;</button>
+			</li>
+		</ul>
+	</div>
 </body>
 </html>
