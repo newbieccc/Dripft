@@ -104,7 +104,7 @@ button {
 </style>
 </head>
 <body>
-	<%@include file="./nav_main.jsp" %>	
+	<%@include file="./nav_main.jsp" %>
 	<div style="width: 800px; height: 100%; margin: 0 auto;">
 	<table class="table table-warning table-hover"
 				style="font-size: 12px; vertical-align: middle;">
