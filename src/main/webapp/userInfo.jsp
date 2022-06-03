@@ -27,8 +27,12 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
-
-
+	
+<style type="text/css">
+#delBtn {
+	margin-left: 40px;
+}
+</style>
 
 </head>
 <script src="resources/js/bootstrap.js"></script>
@@ -99,6 +103,7 @@
         							
         						</div>
         						<button onclick = "location.href='./userUpdate'" id="joinBtn" class="btn btn-outline-success" style = "font-size:2em;">정보수정</button>
+        						<button onclick = "location.href='./accountDel.jsp'" id="delBtn" class="btn btn-outline-danger" style = "font-size:2em;">회원탈퇴</button>
         						
         						
         					</div>
