@@ -120,4 +120,58 @@ public class CommentsDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public int CommentDislike(int c_no, String s_email) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO commentdislikeoverlap(c_no, m_email) VALUES(?,?)";
+		int result = 0;
+
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, c_no);
+			pstmt.setString(2, s_email);
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		} catch (Exception e) {
+
+			return -1;
+		}
+
+		return result;
+	}
+	
+	public void CommentDislikeUp(int c_no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE comments SET C_DISLIKE = C_DISLIKE + 1 WHERE C_NO = ?";
+
+		try {
+			con = DBConnection.dbconn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, c_no);
+			pstmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

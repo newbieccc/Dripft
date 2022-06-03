@@ -37,10 +37,18 @@
 					</c:otherwise>
 				</c:choose>
 			</ul>
-			<form class="d-flex">
-				<input class="form-control me-2" type="search" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
+			<form method="post" name="search" action="./boardSearch">
+				<table class="pull-right">
+					<tr>
+						<td><select class="form-control" name="searchField">
+								<option style="text-align: center;" value="b_title" selected="selected">제목</option>
+								<option style="text-align: center;" value="m_nickname">작성자</option>
+						</select></td>
+						<td><input type="text" class="form-control"
+							placeholder="검색어 입력" name="content" maxlength="100"></td>
+						<td><button type="submit" class="btn btn-success">검색</button></td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</div>

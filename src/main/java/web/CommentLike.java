@@ -26,6 +26,7 @@ public class CommentLike extends HttpServlet {
 			throws ServletException, IOException {
 
 		String action = request.getParameter("action");
+		System.out.println(action);
 		if (action.equals("like")) {
 
 			doCLike(request, response);
@@ -42,7 +43,6 @@ public class CommentLike extends HttpServlet {
 
 	public void doCLike(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		String s_email = (String) request.getSession().getAttribute("m_email");
 		int c_no = Integer.parseInt(request.getParameter("c_no"));
 		String ip = util.getIP.getIPV4(request);
 		PrintWriter pw = response.getWriter();
@@ -69,7 +69,11 @@ public class CommentLike extends HttpServlet {
 		}
 	}
 
-	public void doCDislike(HttpServletRequest request, HttpServletResponse response) {
+	public void doCDislike(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+		int c_no = Integer.parseInt(request.getParameter("c_no"));
+		String s_email = (String) request.getSession().getAttribute("m_email");
+		PrintWriter pw = response.getWriter();
+		
 	}
 }
