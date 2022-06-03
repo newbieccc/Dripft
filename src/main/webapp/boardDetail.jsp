@@ -60,28 +60,35 @@
 		}
 		
 	}
-	
-	function report(){
-		var result = confirm('글을 신고하시겠습니까?');
-		if(result){
-			
-			var reason = prompt('신고사유를 입력해주세요', '');
-			var b_no = '${list.b_no}';
-			var m_email = '${sessionScope.m_email}';
-			console.log(b_no);
-			console.log(m_email);
-			console.log(reason);
-			
-			$.ajax({
-				type : 'POST',
-				url : './report',
-				dataType : 'html',
-				data : {"m_email" : m_email, "b_no": b_no, "reason" : reason},
-				success : function(){
-					alert(reason);
-				}
-			});
+	function cdoLike(c_no) {
+		location.href = "./commentLike?c_no=" + c_no + "&action=like";
 	}
+
+	function cdoDislike(c_no) {
+		location.href = "./commentLike?c_no=" + c_no + "&action=dislike";
+	}
+
+	$(document).ready(function(){
+		$("#report").click(function(){
+			var result = confirm('글을 신고하시겠습니까?');
+			if(result){
+				
+				var reason = prompt('신고사유를 입력해주세요', '');
+				var b_no = '${list.b_no}';
+				var m_email = '${sessionScope.m_email}';
+				
+				$.ajax({
+					type : 'POST',
+					url : './report',
+					dataType : 'html',
+					data : {"m_email" : m_email, "b_no": b_no, "rb_reason" : reason},
+					success : function(){
+						alert(reason);
+					}
+				});
+			}
+		});
+	});
 </script>
 </head>
 <body>
@@ -92,7 +99,7 @@
 				<div class="p-3 border bg-light">
 					제목 : ${list.b_title}<small style="color: green">
 						[${list.totalcomments}]</small>
-						<img alt="" src="./img/report.png" height="20px" onclick="report()">
+						<img id="report" src="./img/report.png" height="20px">
 					<c:if test="${writerCheck ==  1 }">
 						<button type="button" class="btn btn-outline-primary" onclick="doBoardChange()">글수정</button>
 						<button type="button" class="btn btn-outline-danger" onclick="doBoardDelete()">글삭제</button>
@@ -148,8 +155,17 @@
 					<td><img src="./img/user_smile.png" height="30px">${i.m_nickname }</td>
 					<td>${i.c_content }</td>
 					<td>${i.c_date }</td>
-					<td><small style="color: blue">${i.c_like }</small> / <small
-						style="color: red">${i.c_dislike }</small></td>
+					<td style="width: 15%;"><small style="color: blue">${i.c_like }</small> / <small style="color: red">${i.c_dislike }</small>
+						<img src="./img/like.png" height="25px" onclick="cdoLike(${i.c_no})">
+						<c:choose>
+							<c:when test="${sessionScope.m_email ne null}">
+								<img src="./img/dislike.png" height="25px" onclick="cdoDislike(${i.c_no})">
+							</c:when>
+							<c:otherwise>
+								<img src="./img/dislike.png" height="25px" onclick="needLogin()">
+							</c:otherwise>
+						</c:choose>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

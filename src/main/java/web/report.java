@@ -24,14 +24,12 @@ public class report extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String s_email = request.getParameter("m_email");
+		String s_email = (request.getParameter("m_email") == null || request.getParameter("m_email").length()==0)?null:request.getParameter("m_email");
+		//이상하게 null값이여도 공백이 넘어옴. 그래서 공백일경우 null로 처리해줌.
 		int b_no = Integer.parseInt(request.getParameter("b_no"));
 		String rb_reason = request.getParameter("rb_reason");
 		
 		System.out.println(s_email);
-		System.out.println(b_no);
-		System.out.println(rb_reason);
-		
 		ReportDAO dao = new ReportDAO();
 		
 		if(s_email != null) {

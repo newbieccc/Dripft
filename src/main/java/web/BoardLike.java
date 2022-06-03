@@ -27,7 +27,6 @@ public class BoardLike extends HttpServlet {
 		
 		int b_no = Integer.parseInt(request.getParameter("b_no"));
 		String ip = util.getIP.getIPV4(request);
-		System.out.println(ip);
 		
 		if(action.equals("like")) {
 			if(dao.BoardLike(b_no, ip) == 1) {
