@@ -87,6 +87,7 @@
 	function checkpw() {
 		var password = document.getElementById('m_password').value;
 		var password2 = document.getElementById('m_password2').value;
+		
 		if(password != password2) {
 			alert("비밀번호가 일치하지 않습니다");
 			return false;
@@ -123,28 +124,13 @@
 		});
 	}
 	
-	 /* function check() {
-		 
-		   
-		   var name = document.getElementById('m_name').value;
-		   if(name.value.length == 0){
-		      alert("이름을 입력하세요");
-		      return false;
-		   } */
-		   
-		  /*  var m_nickname = form.m_nickname;
-		   if(age.value.length == 0){
-		      alert("닉네임를 입력하세요");
-		      m_nickname.focus();
-		      return false;
-		   }
-		     
-		   var m_tel = form.m_tel;
-		   if(tel.value.length == 0){sdfsdf
-		      alert("전화번호를 입력하세요");
-		      tel.focus();
-		      return false;
-		   }	 */
+	 function check() {
+		var password = document.getElementById('m_password').value;
+		if(password == ''){
+			alert("비밀번호에 공백 있음");
+			return false;
+		} 
+	 }
 	 
 	
 </script>
@@ -166,7 +152,7 @@
 				<div id="checkResult">이메일을 확인중입니다.</div>
 				<input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" class="form-control"> 
 				<input type="password" name="m_password2" id="m_password2" placeholder="비밀번호를 다시한번 입력하세요" class="form-control" onchange="checkpw()"> 
-				<input type="text" name="m_name" id="m_name" placeholder="이름을 입력하세요" class="form-control" > 
+				<input type="text" name="m_name" id="m_name" required="required" "이름을 입력하세요" class="form-control" > 
 				<input type="text" name="m_nickname" id="m_nickname" placeholder="닉네임을 입력하세요" class="form-control" onchange="nickCheck()">
 				<div id="checkResult1">닉네임을 확인중입니다.</div>
 				<input type="date" name="m_birth" placeholder="생일을 입력하세요" class="form-control"> 
