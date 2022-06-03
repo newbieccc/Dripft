@@ -19,6 +19,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
+	
+	<!-- font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
@@ -94,6 +96,7 @@ function checkpw() {
 	}
 	
 	
+	
 }
 
 
@@ -106,8 +109,8 @@ function checkpw() {
       이메일 : ${userInfo.m_email } <br><br>
       <%-- 비밀번호 : ${userInfo.m_password } <br> --%>
       비밀번호 재설정
-      <input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" class="form-control"> <br> 
-	  <input type="password" name="m_password2" id="m_password2" placeholder="비밀번호를 다시한번 입력하세요" class="form-control" onchange="checkpw()"> <br>
+      <input type="password" name="m_password"  id="m_password" value="${userInfo.m_password }" placeholder="비밀번호를 입력하세요" class="form-control"> <br> 
+	  <input type="password" name="m_password2" id="m_password2" value="${userInfo.m_password }" placeholder="비밀번호를 다시한번 입력하세요" class="form-control" onchange="checkpw()"> <br>
       <input type="text" name="m_nickname" id="m_nickname" class="form-control" onchange="nickCheck()" value="${userInfo.m_nickname }">
 	  <div id="checkResult1">닉네임을 확인중입니다.</div><br>
       생일 : ${userInfo.m_birth } <br><br>
