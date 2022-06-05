@@ -13,6 +13,7 @@
   	<filter-name>EncodingFilter</filter-name>
   	<filter-class>filter.EncodingFilter</filter-class>
   </filter>
+  
   <filter-mapping>
   	<filter-name>EncodingFilter</filter-name>
   	<url-pattern>/*</url-pattern>

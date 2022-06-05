@@ -1,8 +1,8 @@
 package dto;
 
 public class LoginDTO {
-	private String m_email, m_password, pw2, m_name, m_nickname, m_birth, m_gender, m_tel, m_authority, m_joindate;
-	private int count, m_del;
+	private String m_email, m_password, pw2, m_name, m_nickname, m_birth, m_gender, m_tel, m_joindate;
+	private int count, m_del, m_authority;
 
 	public int getM_del() {
 		return m_del;
@@ -76,11 +76,11 @@ public class LoginDTO {
 		this.m_tel = m_tel;
 	}
 
-	public String getM_authority() {
+	public int getM_authority() {
 		return m_authority;
 	}
 
-	public void setM_authority(String m_authority) {
+	public void setM_authority(int m_authority) {
 		this.m_authority = m_authority;
 	}
 
