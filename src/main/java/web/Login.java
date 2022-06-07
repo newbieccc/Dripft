@@ -58,14 +58,6 @@ public class Login extends HttpServlet {
 					response.addCookie(cookie);
 					cookie = new Cookie("id_rem", "checked");
 					response.addCookie(cookie);
-//					cookie = new Cookie("m_email", java.net.URLEncoder.encode(id));
-//					cookie.setMaxAge(60*60*24*365);
-//					response.addCookie(cookie);
-//					} else {
-//						cookie = new Cookie("m_email", null);
-//						cookie.setMaxAge(0);
-//						response.addCookie(cookie);
-//					}
 				} else {
 					Cookie cookie = new Cookie("id_rem", "");
 					response.addCookie(cookie);

@@ -59,8 +59,8 @@
 	<%@include file="./nav_main.jsp" %>	
 	<div id="main">
 		<form action="./boardChange.do" method="post">
-			<input type="text" name="b_title" value = "${b_title}">
-			<textarea name="b_content" id="summernote">${b_content}</textarea>
+			<input type="text" name="b_title" value = "${b_title}"  required="required">
+			<textarea name="b_content" id="summernote"  required="required">${b_content}</textarea>
 			<input type="hidden" name = "b_no" value = "${b_no}">
 			<button id="btn" type="submit">글쓰기</button>
 		</form>

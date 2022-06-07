@@ -68,7 +68,6 @@
 				if (result == 0) {
 					$("#checkResult").css("color", "green");
 					$("#checkResult").text(email + "은 가입할 수 있습니다.");
-					$("#joinBtn").attr("disabled", false);
 				} else {
 					$("#checkResult").css("color", "red");
 					$("#checkResult").text(email + "는 이미 사용중이거나 탈퇴한 Email입니다.");
@@ -90,6 +89,7 @@
 		
 		if(password != password2) {
 			alert("비밀번호가 일치하지 않습니다");
+			$("#joinBtn").attr("disabled", true);
 			return false;
 		} else {
 			alert("비밀번호가 일치합니다");
@@ -110,11 +110,11 @@
 				if (result == 0) {
 					$("#checkResult1").css("color", "green");
 					$("#checkResult1").text(nickname + "은 가입할 수 있습니다.");
-					$("#joinBtn").attr("disabled", false); 
+					$("#joinBtn").attr("disabled", true);
 				} else {
 					$("#checkResult1").css("color", "red");
 					$("#checkResult1").text(nickname + "는 이미 등록된 닉네임입니다.");
-					$("#joinBtn").attr("disabled", true); 
+					$("#joinBtn").attr("disabled", false);
 					$("#nickname").focus();
 				}
 			},
@@ -159,7 +159,7 @@
 				<input type="radio" name="m_gender" value="male" class="custom-control-input" checked>남자 
 				<input type="radio"	name="m_gender" value="female" class="custom-control-input">여자 
 				<input	type="tel" name="m_tel" placeholder="전화번호를 입력하세요" required="required" class="form-control">
-				<button type="submit" id="joinBtn" class="btn btn-outline-success">가입하기</button>
+				<button type="submit" id="joinBtn" class="btn btn-outline-success" disabled="disabled">가입하기</button>
 			</form>
 		</div>
 
