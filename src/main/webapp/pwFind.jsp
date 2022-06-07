@@ -43,7 +43,7 @@ function emailCheck() {
 		dataType : "html",
 		data : {"m_email" : m_email},
 		success : function(result) {
-			if (result == 0) {
+			if (result == 1) {
 				alert("해당 등록 된 계정이 없습니다.");
 				alert("계정 찾기 페이지로 이동합니다.");
 				location.href = './idFind.jsp';
