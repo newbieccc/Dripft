@@ -28,15 +28,61 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Brush+Script&display=swap"
 	rel="stylesheet">
+<style type="text/css">
+ul.tabs{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+ul.tabs li{
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+ul.tabs li.current{
+  background: #ededed;
+  color: #222;
+}
+
+.tab-content{
+  display: none;  
+  padding: 15px 0;
+  border-top:3px solid #eee;
+}
+
+.tab-content.current{
+  display: inherit;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	   
+	  $('ul.tabs li').click(function(){
+	    var tab_id = $(this).attr('data-tab');
+	 
+	    $('ul.tabs li').removeClass('current');
+	    $('.tab-content').removeClass('current');
+	 
+	    $(this).addClass('current');
+	    $("#"+tab_id).addClass('current');
+	  })
+	 
+	})
+</script>
 </head>
 
 <body>
 	<jsp:include page="nav_main.jsp"></jsp:include>
 	<div class="container">
-		<span class="badge bg-info text-dark" onclick="">인기게시글</span>
-		<span class="badge bg-warning text-dark" onclick="">일반게시글</span>
-		<span class="badge bg-dark" onclick="">공지사항</span>
-		<div class="panel">
+		<ul class="tabs">
+			<li class="tab-link current" data-tab="tab-1">인기게시글</li>
+			<li class="tab-link" data-tab="tab-2">일반게시글</li>
+			<li class="tab-link" data-tab="tab-3">공지사항</li>
+		</ul>
+		<div class="panel tab-content current" id = "tab-1">
 			<table class="table table-primary table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
@@ -62,7 +108,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="panel">
+		<div class="panel tab-content" id = "tab-2">
 			<table class="table table-warning table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle;">
 				<tbody>
@@ -88,7 +134,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="panel">
+		<div class="panel tab-content" id = "tab-3">
 			<table class="table table-dark table-hover"
 				style="font-size: 12px; text-align: center; vertical-align: middle; color: white;">
 				<tbody>

@@ -46,9 +46,7 @@ public class Login extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("m_nickname", dto.getM_nickname());
 				session.setAttribute("m_email", dto.getM_email());
-
-				String m_email = (String) session.getAttribute("m_email");
-				String m_password = (String) session.getAttribute("m_password");
+				session.setAttribute("m_authority", dto.getM_authority());
 				
 				if(id_rem != null) {
 					StringTokenizer st = new StringTokenizer(id, "@");
@@ -76,7 +74,11 @@ public class Login extends HttpServlet {
 					cookie = new Cookie("domain","");
 					response.addCookie(cookie);
 				}
-				response.sendRedirect("./main");
+				if(dto.getM_authority() < 5) {
+					response.sendRedirect("./main");
+				}else {
+					response.sendRedirect("./adminMain");
+				}
 			} else if( dto.getM_del() == 1 && dto.getCount() == 1) {
 				response.sendRedirect("./login.jsp?error=deleted");
 			}else {

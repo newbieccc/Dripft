@@ -131,7 +131,6 @@ p {
 }	
 div{
 	text-align: center;
-	padding: 5px;
 }
 body {
 	background-image: url('img/logo.png');

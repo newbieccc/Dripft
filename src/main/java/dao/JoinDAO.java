@@ -122,7 +122,6 @@ public class JoinDAO {
 
 			while (rs.next()) {
 				dto.setM_email(rs.getString("m_email"));
-				dto.setM_password(rs.getString("m_password"));
 				dto.setM_name(rs.getString("m_name"));
 				dto.setM_nickname(rs.getString("m_nickname"));
 				dto.setM_birth(rs.getString("m_birth"));
