@@ -43,7 +43,7 @@ function emailCheck() {
 		dataType : "html",
 		data : {"m_email" : m_email},
 		success : function(result) {
-			if (result == 1) {
+			if (result == 0) {
 				alert("해당 등록 된 계정이 없습니다.");
 				alert("계정 찾기 페이지로 이동합니다.");
 				location.href = './idFind.jsp';
@@ -104,7 +104,7 @@ p {
 <jsp:include page="nav_main.jsp"></jsp:include>
 <div id="create-user" class="content" role="main">
 		<h3 id="content-heade">비밀번호 재설정</h3>
-			<form name="pwFind"  action="./pwFind" method="post">
+			<form name="pwFind"  action="./pwFind" method="post" onsubmit="return emailCheck()">
 			<div class="col-sm-8 col-sm-offset-2">
 			    <div class="panel panel-default panel-margin-10">
 			        <div class="panel-body panel-body-content text-center" style="width: 600px;">
@@ -118,7 +118,7 @@ p {
 			            	    <input type="password" id="m_password" name="m_password" class="form-control form-control-inline text-center" placeholder="비밀번호" value="" required="required">
 			            	    <input type="password" id="pw2" name="pw2" class="form-control form-control-inline text-center" placeholder="비밀번호 확인" value="" required="required" onchange="checkpw()">
 			        	    </div>
-			    	        <button type="submit" class="btn btn-primary" onclick="return emailCheck()">재설정</button> <a href="/main" class="btn btn-default">메인으로</a>
+			    	        <button type="submit" class="btn btn-primary">재설정</button> <a href="/main" class="btn btn-default">메인으로</a>
 			    	        <hr>
 				        </div>
 				    </div>

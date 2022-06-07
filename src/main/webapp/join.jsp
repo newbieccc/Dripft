@@ -150,15 +150,15 @@
 			<form name="joinform" action="./join" method="post"	onsubmit="return check()">
 				<input type="email" name="m_email" id="m_email" placeholder="이메일을 입력하세요" class="form-control" onchange="emailCheck()">
 				<div id="checkResult">이메일을 확인중입니다.</div>
-				<input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" class="form-control"> 
-				<input type="password" name="m_password2" id="m_password2" placeholder="비밀번호를 다시한번 입력하세요" class="form-control" onchange="checkpw()"> 
-				<input type="text" name="m_name" id="m_name" required="required" "이름을 입력하세요" class="form-control" > 
-				<input type="text" name="m_nickname" id="m_nickname" placeholder="닉네임을 입력하세요" class="form-control" onchange="nickCheck()">
+				<input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" required="required" class="form-control"> 
+				<input type="password" name="m_password2" id="m_password2" placeholder="비밀번호를 다시한번 입력하세요" required="required" class="form-control" onchange="checkpw()"> 
+				<input type="text" name="m_name" id="m_name" placeholder="이름을 입력하세요" required="required" class="form-control" > 
+				<input type="text" name="m_nickname" id="m_nickname" placeholder="닉네임을 입력하세요" required="required" class="form-control" onchange="nickCheck()">
 				<div id="checkResult1">닉네임을 확인중입니다.</div>
 				<input type="date" name="m_birth" placeholder="생일을 입력하세요" class="form-control"> 
-				<input type="radio" name="m_gender" value="male" class="custom-control-input">남자 
+				<input type="radio" name="m_gender" value="male" class="custom-control-input" checked>남자 
 				<input type="radio"	name="m_gender" value="female" class="custom-control-input">여자 
-				<input	type="tel" name="m_tel" placeholder="전화번호를 입력하세요"	class="form-control">
+				<input	type="tel" name="m_tel" placeholder="전화번호를 입력하세요" required="required" class="form-control">
 				<button type="submit" id="joinBtn" class="btn btn-outline-success">가입하기</button>
 			</form>
 		</div>

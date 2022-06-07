@@ -109,8 +109,8 @@ function checkpw() {
       이메일 : ${userInfo.m_email } <br><br>
       <%-- 비밀번호 : ${userInfo.m_password } <br> --%>
       비밀번호 재설정
-      <input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" class="form-control"> <br> 
-	  <input type="password" name="m_password2" id="m_password2"placeholder="비밀번호를 다시한번 입력하세요" class="form-control" onchange="checkpw()"> <br>
+      <input type="password" name="m_password"  id="m_password" placeholder="비밀번호를 입력하세요" required="required" class="form-control"> <br> 
+	  <input type="password" name="m_password2" id="m_password2"placeholder="비밀번호를 다시한번 입력하세요" required="required" class="form-control" onchange="checkpw()"> <br>
       <input type="text" name="m_nickname" id="m_nickname" class="form-control" onchange="nickCheck()" value="${userInfo.m_nickname }">
 	  <div id="checkResult1">닉네임을 확인중입니다.</div><br>
       생일 : ${userInfo.m_birth } <br><br>

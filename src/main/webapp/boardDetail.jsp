@@ -130,7 +130,7 @@
 				data : {"c_no" : c_no, "action" : 'commentDelete'},
 				success : function(result){
 					if(result == 1){
-						alert('댓글수정이 완료되었습니다');
+						alert('댓글삭제가 완료되었습니다');
 						location.reload();
 					}else{
 						alert('댓글수정 권한이 없습니다.');
