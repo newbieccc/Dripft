@@ -37,17 +37,15 @@ public class PWFind extends HttpServlet {
 		
 		if(m_password.equals(pw2)) {
 			if(dao.pwFind(dto) == 1) {
-				//회원정보가 정상적으로 업데이트 됨 -> 로그인창 고고
+				//회원정보가 정상적으로 업데이트 됨 -> 로그인창으로
 				response.sendRedirect("./login.jsp");				
 			}else {
-				//회원정보가 틀림 -> e_mail찾기 페이지
+				//회원정보가 틀림 -> e_mail찾기 페이지로
 				response.sendRedirect("./idFind.jsp?error=1024");				
 			}
 		}else {
 			//암호 두개가 안맞았음 -> 다시 그자리 pwFind.jsp
 			response.sendRedirect("./pwFind.jsp");
 		}		
-		
 	}
-
 }

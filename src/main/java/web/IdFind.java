@@ -22,13 +22,11 @@ public class IdFind extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
 		
 		String m_name = request.getParameter("m_name");
 		String m_tel = request.getParameter("m_tel");
@@ -37,12 +35,9 @@ public class IdFind extends HttpServlet {
 		JoinDAO dao = new JoinDAO();
 		
 		String m_email = dao.idFind(dto);
-		/* System.out.println(m_email); */
 		if(m_email == null) {
 			response.sendRedirect("./idFindFail.jsp");
-			
 		}else {
-			
 			RequestDispatcher rd = request.getRequestDispatcher("./idFind.jsp");
 			request.setAttribute("m_email", dao.idFind(dto));
 			rd.forward(request, response);

@@ -22,14 +22,13 @@ public class DelCheck extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//id와?
 				if(request.getParameter("id") != null) {
-					//System.out.println(request.getParameter("id"));
+					System.out.println(request.getParameter("id"));
+					
 					String id = request.getParameter("id");
 					dao.JoinDAO dao = new dao.JoinDAO();
 					int result = 1; //0없음, 1있음
 					result = dao.idCheck(id);
-					
 					
 					PrintWriter pw = response.getWriter();
 					pw.print(result);//출력
