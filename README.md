@@ -11,7 +11,7 @@
 - **프로젝트 기획 상세**
   - 사용자가 자유롭게 게시글을 쓸 수 있도록 만든 커뮤니티 사이트
   - 역할자 - 사용자
-  - 참고한 서비스: 유머 커뮤니티 사이트
+  - 참고한 서비스: 각종 커뮤니티 사이트
 - **개발 기간**
   - 2022.05.20 ~ 2022.06.06
 - **사용 기술 및 라이브러리**
@@ -21,10 +21,10 @@
 
 ## 01. 주요 코드
 
-- [계정찾기.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/IdFind.java)
-- [비밀번호 재설정.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/PWFind.java)
-- [회원탈퇴.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/DeleteAccount.java)
-- [공지사항 페이징.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/NoticeList.java)
+- **[계정찾기.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/IdFind.java)**
+- **[비밀번호 재설정.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/PWFind.java)**
+- **[회원탈퇴.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/DeleteAccount.java)**
+- **[공지사항 페이징.java](https://github.com/newbieccc/Dripft/blob/main/src/main/java/web/NoticeList.java)**
 
 ## 02 주요 화면
 
